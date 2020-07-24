@@ -5,8 +5,8 @@ import org.academiadecodigo.felinux.controller.Controller;
 import org.academiadecodigo.felinux.model.client.Client;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -18,8 +18,8 @@ public class ClientConnection implements Runnable {
     private Server server;
     private Client client;
     private Controller controller;
-    private Prompt prompt;
     private PrintStream printStream;
+    private InputStream inputStream;
 
 
     /**
@@ -32,7 +32,6 @@ public class ClientConnection implements Runnable {
         this.server = server;
         this.socket = socket;
         client = new Client();
-        prompt  = createPrompt();
     }
 
     /**
@@ -42,6 +41,8 @@ public class ClientConnection implements Runnable {
      */
     @Override
     public void run() {
+
+        createStreams();
 
         send("Hello");
 
@@ -56,14 +57,29 @@ public class ClientConnection implements Runnable {
      * Creates a new prompt
      * @return a new Prompt
      */
-    private Prompt createPrompt() {
+    private void createStreams() {
         try {
             printStream = new PrintStream(socket.getOutputStream());
-            return new Prompt(socket.getInputStream(), printStream);
+            inputStream = socket.getInputStream();
         } catch (IOException ioe) {
             System.err.println("Error: " + ioe.getMessage());
         }
-        return null;
+    }
+
+    /**
+     * Returns ouput stream of this connection
+     * @return PrintStream
+     */
+    public PrintStream getPrintStream() {
+        return printStream;
+    }
+
+    /**
+     * Return input stream of this connection
+     * @return InputStream
+     */
+    public InputStream getInputStream() {
+        return inputStream;
     }
 
     /**
