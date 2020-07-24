@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 
 public class App {
     public static void main(String[] args) {
-        ServerSocket socket = null;
+       /* ServerSocket socket = null;
         try {
             socket = new ServerSocket(9000);
         } catch (IOException e) {
@@ -20,6 +20,6 @@ public class App {
             Prompt prompt = new Prompt(socket.getInputStream(),printStream);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }

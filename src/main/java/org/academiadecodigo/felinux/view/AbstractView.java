@@ -4,6 +4,14 @@ import org.academiadecodigo.bootcamp.Prompt;
 
 public abstract class AbstractView implements View{
 
-    private Prompt prompt;
+    protected Prompt prompt;
 
+
+    public Prompt getPrompt() {
+        return prompt;
+    }
+
+    public void setPrompt(Prompt prompt) {
+        this.prompt = prompt;
+    }
 }
