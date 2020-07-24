@@ -1,6 +1,5 @@
 package org.academiadecodigo.felinux.server;
 
-import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.felinux.controller.Controller;
 import org.academiadecodigo.felinux.model.client.Client;
 
@@ -44,7 +43,7 @@ public class ClientConnection implements Runnable {
 
         createStreams();
 
-        send("Hello");
+        send("Hello. You matter!");
 
     }
 
