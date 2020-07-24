@@ -45,9 +45,31 @@ public class ClientConnection implements Runnable {
 
         send("Hello. You matter!");
 
+        while(!socket.isClosed()) {
+            controller.execute();
+        }
+
     }
 
+    /*public void listen() {
 
+        byte[] buffer = new byte[1024];
+        StringBuilder message = new StringBuilder();
+
+            try {
+                while (((inputStream.read(buffer)) != -1)) {
+                    message.append(buffer);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+*/
+
+    /**
+     * Sends a message to the client connected
+     * @param message
+     */
     public void send(String message) {
         printStream.println(message);
     }
