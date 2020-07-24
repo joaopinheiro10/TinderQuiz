@@ -43,7 +43,7 @@ public class ClientConnection implements Runnable {
     @Override
     public void run() {
 
-        send("Hello");
+        send("Hello. You matter!");
 
     }
 

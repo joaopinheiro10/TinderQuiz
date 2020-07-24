@@ -34,9 +34,10 @@ public class Server {
 
             try {
 
+                System.out.println("Waiting to save someone's life.");
                 Socket clientSocket = this.serverSocket.accept();
                 System.out.println("Connected to IP: " + clientSocket.getInetAddress() + " at Port: " + clientSocket.getPort());
-                ClientConnection clientConnection = new ClientConnection();
+                ClientConnection clientConnection = new ClientConnection(this, clientSocket);
                 clientConnectionList.add(clientConnection);
                 threadPool.submit(clientConnection);
 
