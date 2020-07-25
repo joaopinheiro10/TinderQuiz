@@ -8,7 +8,7 @@ public class Messages {
      * */
     public static final String STARTGAME = "The game start";
     public static final String INSTRUCTIONS = "Instructions";
-    public static final String EXIT = "Game Ends";
+    public static final String EXIT = "Quit";
 
     public static final String MENU_VIEW = "Please choose an option.";
     public static final String MENU_VIEW_ERROR = "Invalid option.";
@@ -19,7 +19,7 @@ public class Messages {
      * */
     public static final String LOGIN = "The game start";
     public static final String ANSWER = "Instructions";
-    public static final String WAITING = "Game Ends";
+    public static final String WAITING = "Other player's turn";
 
     public static final String GAMERULES = "1-Minimum 2, Maximum 4 players;\n" +
             "2-Player credentials: username, contact (optional)\n" +

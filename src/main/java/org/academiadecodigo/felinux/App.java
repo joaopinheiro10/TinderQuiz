@@ -5,6 +5,7 @@ import org.academiadecodigo.felinux.controller.*;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.view.LoginView;
 import org.academiadecodigo.felinux.view.MenuView;
+import org.academiadecodigo.felinux.view.RulesView;
 import org.academiadecodigo.felinux.view.UserOptions;
 
 import java.io.IOException;
@@ -68,8 +69,10 @@ public class App {
 
             menuController.setControllerMap(menuMap);
 
-
-
+            //setup the rules and waiting controllers
+            RulesView rulesView = new RulesView();
+            rulesController.setView(rulesView);
+            rulesView.setRulesController(rulesController);
 
             //server.getClientConnectionList().get(0).setController(loginController);
             server.start(loginController);

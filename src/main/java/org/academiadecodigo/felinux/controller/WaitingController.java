@@ -6,5 +6,7 @@ public class WaitingController extends AbstractController{
     @Override
     public void execute() {
 
+        view.show();
+
     }
 }

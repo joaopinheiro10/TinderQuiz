@@ -13,5 +13,9 @@ public class WaitingView extends AbstractView{
     @Override
     public void show() {
 
+        System.out.println(Messages.WAITING);
+
+        //Invocar aqui o broadcast?
+
     }
 }
