@@ -1,8 +1,6 @@
 package org.academiadecodigo.felinux.view;
 
-import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
-import org.academiadecodigo.felinux.controller.Controller;
 import org.academiadecodigo.felinux.controller.LoginController;
 import org.academiadecodigo.felinux.server.Server;
 

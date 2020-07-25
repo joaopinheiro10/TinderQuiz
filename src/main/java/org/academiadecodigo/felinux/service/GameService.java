@@ -1,6 +1,7 @@
 package org.academiadecodigo.felinux.service;
 
 import org.academiadecodigo.bootcamp.Prompt;
+import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.ClientConnection;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.view.Quiz;
@@ -11,8 +12,9 @@ public class GameService {
 
     private Server server;
     private String currentQuestion;
-    private ClientConnection currentPlayer;
     private int questionNumber;
+    private  int currentPlayer = 0;
+
 /*
     public Prompt getUserPrompt(int playerNumber) {
         return server.getClientConnectionList().get(playerNumber).getPrompt();
@@ -35,7 +37,7 @@ public class GameService {
     //Missing the answer back to the client
     public boolean checkAnswer(int playerNumber, String answer) {
 
-        if(answer.equals(Quiz.values()[questionNumber].getCorrectAnswer())) {
+        if(answer.equals(Quiz.values()[questionNumber].getCorrectAnswer())){
          //   rightAnswer(playerNumber);
             return true;
         }
@@ -61,5 +63,9 @@ public class GameService {
 
     public String match() {
         return null;
+    }
+
+    public int getCurrentPlayer() {
+        return currentPlayer;
     }
 }

@@ -44,8 +44,7 @@ public class ClientConnection implements Runnable {
 
         createStreams();
 
-        new Bootstrap(id, inputStream, printStream, gameController);
-
+        gameController.addBootstrap (id, new Bootstrap(id, inputStream, printStream, gameController));
 
         /*
         prompt = createPrompt();
