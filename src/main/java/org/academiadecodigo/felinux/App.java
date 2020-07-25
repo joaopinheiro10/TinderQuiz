@@ -1,18 +1,13 @@
 package org.academiadecodigo.felinux;
 
-import jdk.vm.ci.meta.MemoryAccessProvider;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.felinux.controller.*;
 import org.academiadecodigo.felinux.server.Server;
-import org.academiadecodigo.felinux.service.GameService;
 import org.academiadecodigo.felinux.view.LoginView;
 import org.academiadecodigo.felinux.view.MenuView;
 import org.academiadecodigo.felinux.view.UserOptions;
-import org.graalvm.compiler.lir.LIRInstruction;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.net.ServerSocket;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -52,6 +47,8 @@ public class App {
             loginController.setView(loginView);
             loginView.setLoginController(loginController);
 
+
+
             // setup menu controller and view
             MenuController menuController = new MenuController();
             MenuView menuView = new MenuView(); // TODO which prompt?
@@ -70,6 +67,8 @@ public class App {
             menuMap.put(UserOptions.INSTRUCTIONS.getOption(), rulesController);
 
             menuController.setControllerMap(menuMap);
+
+
 
 
             //server.getClientConnectionList().get(0).setController(loginController);
