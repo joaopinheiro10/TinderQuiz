@@ -23,4 +23,8 @@ public abstract class AbstractController implements Controller {
     public void setId(int id) {
         this.id = id;
     }
+
+    public GameController getGameController() {
+        return gameController;
+    }
 }

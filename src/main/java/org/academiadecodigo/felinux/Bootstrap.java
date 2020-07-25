@@ -94,7 +94,8 @@ public class Bootstrap {
         answeringController.setView(answeringView);
         answeringView.setAnsweringController(answeringController);
         answeringView.setPrompt(prompt);
-
+        answeringView.setPrintStream(printStream);
+        answeringController.setGameController(gameController);
     }
 
     private void wireWaiting() {
@@ -104,6 +105,8 @@ public class Bootstrap {
         waitingController.setView(waitingView);
         waitingView.setWaitingController(waitingController);
         waitingView.setPrompt(prompt);
+        waitingView.setPrintStream(printStream);
+        waitingController.setGameController(gameController);
 
     }
 

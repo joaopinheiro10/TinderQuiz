@@ -1,5 +1,6 @@
 package org.academiadecodigo.felinux.view;
 
+import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.felinux.controller.AnsweringController;
 
 public class AnsweringView extends AbstractView{
@@ -12,8 +13,15 @@ public class AnsweringView extends AbstractView{
 
     @Override
     public void show() {
-
-        printStream.println("A pergunta tem de chegar aqui");
-
+        System.out.println("View Answer");
+        StringInputScanner scanner = new StringInputScanner();
+        scanner.setMessage(answeringController.getGameController().getQuestion());
+        scanner.setError("");
+       answeringController.validateAnswer(prompt.getUserInput(scanner));
+        if (answeringController.isAnswer()) {
+            printStream.println(Messages.RIGHT);
+        } else {
+            printStream.println(Messages.WRONG);
+        }
     }
 }

@@ -6,13 +6,15 @@ public class Messages {
     /**
      * Menu options messages
      * */
-    public static final String STARTGAME = "The game start";
+    public static final String STARTGAME = "Game start";
     public static final String INSTRUCTIONS = "Instructions";
     public static final String EXIT = "Quit";
 
     public static final String MENU_VIEW = "Please choose an option.";
     public static final String MENU_VIEW_ERROR = "Invalid option.";
 
+    public static final String RIGHT = "RIGHT";
+    public static final String  WRONG= "WRONG";
 
     /**
      * Game messages

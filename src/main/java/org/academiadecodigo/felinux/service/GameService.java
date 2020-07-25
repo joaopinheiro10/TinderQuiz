@@ -1,33 +1,34 @@
 package org.academiadecodigo.felinux.service;
 
-import org.academiadecodigo.bootcamp.Prompt;
+import org.academiadecodigo.felinux.controller.GameController;
 import org.academiadecodigo.felinux.model.client.Client;
-import org.academiadecodigo.felinux.server.ClientConnection;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.view.Quiz;
-
-import java.util.LinkedList;
 
 public class GameService {
 
     private Server server;
     private String currentQuestion;
     private int questionNumber;
-    private  int currentPlayer = 0;
+    private  int currentIdPlayer = 0;
 
-/*
-    public Prompt getUserPrompt(int playerNumber) {
-        return server.getClientConnectionList().get(playerNumber).getPrompt();
+    public GameService(Server server) {
+        this.server = server;
     }
 
-    public void changeName(int playerNumber, String name) {
-        server.getClientConnectionList().get(playerNumber).getClient().setName(name);
-    }
+    /*
+        public Prompt getUserPrompt(int playerNumber) {
+            return server.getClientConnectionList().get(playerNumber).getPrompt();
+        }
 
-    public void phoneNumber(int playerNumber, int phoneNumber) {
-        server.getClientConnectionList().get(playerNumber).getClient().setPhoneNumber(phoneNumber);
-    }
-*/
+        public void changeName(int playerNumber, String name) {
+            server.getClientConnectionList().get(playerNumber).getClient().setName(name);
+        }
+
+        public void phoneNumber(int playerNumber, int phoneNumber) {
+            server.getClientConnectionList().get(playerNumber).getClient().setPhoneNumber(phoneNumber);
+        }
+    */
     public String generateQuestion() {
         questionNumber = (int) (Math.floor(Math.random() * Quiz.values().length));
         currentQuestion = Quiz.values()[questionNumber].getQuestion();
@@ -37,7 +38,7 @@ public class GameService {
     //Missing the answer back to the client
     public boolean checkAnswer(int playerNumber, String answer) {
 
-        if(answer.equals(Quiz.values()[questionNumber].getCorrectAnswer())){
+        if(answer.equalsIgnoreCase(Quiz.values()[questionNumber].getCorrectAnswer())){
          //   rightAnswer(playerNumber);
             return true;
         }
@@ -65,7 +66,20 @@ public class GameService {
         return null;
     }
 
-    public int getCurrentPlayer() {
-        return currentPlayer;
+    public int getCurrentIdPlayer() {
+        return currentIdPlayer;
     }
+
+    public Client getCurrentPlayer(){
+    return server.getClient(currentIdPlayer);
+    }
+
+    public void upDateCurrentPlayer() {
+        if((server.getClientMap().size() -1) == currentIdPlayer){
+            currentIdPlayer = 0;
+            return;
+        }
+        currentIdPlayer++;
+    }
+
 }

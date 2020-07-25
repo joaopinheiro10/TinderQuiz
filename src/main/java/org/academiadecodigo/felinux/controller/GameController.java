@@ -10,7 +10,7 @@ public class GameController implements Controller {
 
     private Server server;
     private String question;
-    private GameService gameService = new GameService();
+    private GameService gameService;
     private HashMap<Integer, Bootstrap> bootstrapMap = new HashMap<>();
 
 
@@ -21,6 +21,7 @@ public class GameController implements Controller {
 
     public void setServer(Server server) {
         this.server = server;
+        gameService = new GameService(server);
     }
 
     @Override
@@ -28,7 +29,8 @@ public class GameController implements Controller {
         question = gameService.generateQuestion();
         System.out.println(question);
         whoAnswer();
-
+        System.out.println("before loop");
+        execute();
     }
 
     public String getQuestion() {
@@ -42,15 +44,24 @@ public class GameController implements Controller {
     public void whoAnswer() {
         System.out.println(bootstrapMap.size());
         for (int key : bootstrapMap.keySet()) {
-            System.out.println("Key: " + key + "|" + "current player: " + gameService.getCurrentPlayer());
-            if (key != gameService.getCurrentPlayer()) {
+            System.out.println("Key: " + key + "|" + "current player: " + gameService.getCurrentIdPlayer());
+            if (key != gameService.getCurrentIdPlayer()) {
                 System.out.println("estou dentro do if");
                 bootstrapMap.get(key).getWaitingController().execute();
             }
         }
-
-        bootstrapMap.get(gameService.getCurrentPlayer()).getAnsweringController().execute();
+        bootstrapMap.get(gameService.getCurrentIdPlayer()).getAnsweringController().execute();
     }
+
+    public  boolean checkAnswer(String answer){
+      return gameService.checkAnswer(gameService.getCurrentIdPlayer(),answer);
+    }
+
+    public void upDateResult(boolean answer){
+        gameService.getCurrentPlayer().updateScore(answer);
+        gameService.upDateCurrentPlayer();
+    }
+
 }
 
 

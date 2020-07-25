@@ -26,7 +26,11 @@ public class Client {
         this.phoneNumber = phoneNumber;
     }
 
-    public void correctAnswer() {
+    public void updateScore(boolean isAnswer) {
+        System.out.println("update");
+        if (!isAnswer) {
+            return;
+        }
         this.numberOfCorrectAnswers++;
     }
 }

@@ -3,6 +3,7 @@ package org.academiadecodigo.felinux.view;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.felinux.controller.LoginController;
 import org.academiadecodigo.felinux.server.Server;
+import org.academiadecodigo.felinux.utilits.ASCIIArtGenerator;
 
 public class LoginView extends AbstractView {
 
@@ -23,7 +24,11 @@ public class LoginView extends AbstractView {
         //prompt = new Prompt(server.getClientConnectionList().get(0).getInputStream(),
                 //server.getClientConnectionList().get(0).getPrintStream());
         StringInputScanner scanner = new StringInputScanner();
-        scanner.setMessage("The Message");
+        try {
+            scanner.setMessage(ASCIIArtGenerator.printTextArt(Messages.STARTGAME,10));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         scanner.setError("");
 /*
         System.out.println(prompt);
