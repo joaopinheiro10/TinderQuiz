@@ -48,10 +48,7 @@ public class GameController implements Controller {
                 bootstrapMap.get(key).getWaitingController().execute();
             }
         }
-        System.out.println("estou aqui");
-        System.out.println(gameService);
-        System.out.println(gameService.getCurrentPlayer());
-        System.out.println(bootstrapMap.get(gameService.getCurrentPlayer()).getAnsweringController());
+
         bootstrapMap.get(gameService.getCurrentPlayer()).getAnsweringController().execute();
     }
 }

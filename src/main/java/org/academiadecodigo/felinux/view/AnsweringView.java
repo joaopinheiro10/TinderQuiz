@@ -13,5 +13,7 @@ public class AnsweringView extends AbstractView{
     @Override
     public void show() {
 
+        printStream.println("A pergunta tem de chegar aqui");
+
     }
 }
