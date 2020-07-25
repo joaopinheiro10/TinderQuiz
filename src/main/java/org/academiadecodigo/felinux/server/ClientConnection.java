@@ -16,7 +16,6 @@ import java.net.Socket;
 public class ClientConnection implements Runnable {
 
     private final Socket socket;
-    private final  Server server;
     private final Client client;
     private LoginController  controller;
     private PrintStream printStream;
@@ -27,11 +26,9 @@ public class ClientConnection implements Runnable {
     /**
      * Initializes the properties of the newly created ClientConnection so it represents the connection
      * between server and client
-     * @param server represents the server which established the connection
      * @param socket represents the socket created by the ServerSocket.accept();
      */
-    public ClientConnection(Server server, Socket socket) {
-        this.server = server;
+    public ClientConnection(Socket socket) {
         this.socket = socket;
         client = new Client();
     }

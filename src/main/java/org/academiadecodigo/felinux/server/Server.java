@@ -17,7 +17,7 @@ public class Server {
     private static final int NUMBER_OF_THREADS = 4;
     private final ExecutorService threadPool;
 
-    private List<ClientConnection> clientConnectionList;
+    private LinkedList<ClientConnection> clientConnectionList;
     private ServerSocket serverSocket;
 
     private Scanner scanner = new Scanner(System.in);
@@ -39,7 +39,7 @@ public class Server {
                 System.out.println("Waiting to save someone's life.");
                 Socket clientSocket = this.serverSocket.accept();
                 System.out.println("Connected to IP: " + clientSocket.getInetAddress() + " at Port: " + clientSocket.getPort());
-                ClientConnection clientConnection = new ClientConnection(this, clientSocket);
+                ClientConnection clientConnection = new ClientConnection(clientSocket);
                 clientConnection.setController(loginController);
                 clientConnectionList.add(clientConnection);
                 threadPool.submit(clientConnection);
@@ -54,7 +54,7 @@ public class Server {
 
     }
 
-    public List<ClientConnection> getClientConnectionList() {
+    public LinkedList<ClientConnection> getClientConnectionList() {
         return clientConnectionList;
     }
 }
