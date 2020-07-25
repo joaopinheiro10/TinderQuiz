@@ -16,7 +16,10 @@ public class GameController implements Controller {
 
     public void changeName(int id, String name) {
         server.getClient(id).setName(name);
-        System.out.println(name);
+    }
+
+    public void changePhoneNumber (int id, int phoneNumber ) {
+        server.getClient(id).setPhoneNumber(phoneNumber);
     }
 
     public void setServer(Server server) {
@@ -61,6 +64,7 @@ public class GameController implements Controller {
         gameService.getCurrentPlayer().updateScore(answer);
         gameService.upDateCurrentPlayer();
     }
+
 
 }
 

@@ -10,7 +10,7 @@ public class GameService {
     private Server server;
     private String currentQuestion;
     private int questionNumber;
-    private  int currentIdPlayer = 0;
+    private int currentIdPlayer = 0;
 
     public GameService(Server server) {
         this.server = server;

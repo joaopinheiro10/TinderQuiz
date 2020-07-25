@@ -41,8 +41,4 @@ public class LoginView extends AbstractView {
 
     }
 
-    private void shoGameIntro() {
-    }
-
-
 }
