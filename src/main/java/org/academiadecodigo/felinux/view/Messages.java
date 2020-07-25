@@ -21,7 +21,8 @@ public class Messages {
     public static final String ANSWER = "Instructions";
     public static final String WAITING = "Other player's turn";
 
-    public static final String GAMERULES = "1-Minimum 2, Maximum 4 players;\n" +
+
+    public static final String GAMERULES = "These are the game rules:\n\n" +"1-Minimum 2, Maximum 4 players;\n" +
             "2-Player credentials: username, contact (optional)\n" +
             "3-Question: Right, don't \"drink\" and move on to the next. Fail, drink, move on to the next; (Everyone sees a question and an answer)\n" +
             "4-Bonus round at the end of each round\n" +

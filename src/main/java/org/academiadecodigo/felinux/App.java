@@ -5,6 +5,7 @@ import org.academiadecodigo.felinux.controller.*;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.view.LoginView;
 import org.academiadecodigo.felinux.view.MenuView;
+import org.academiadecodigo.felinux.view.RulesView;
 import org.academiadecodigo.felinux.view.UserOptions;
 
 import java.io.IOException;
@@ -59,6 +60,10 @@ public class App {
             //instantiate game and rules controller to test
             GameController gameController = new GameController();
             RulesController rulesController = new RulesController();
+            RulesView rulesView = new RulesView();
+            rulesController.setView(rulesView);
+            rulesView.setServer(server);
+            rulesView.setRulesController(rulesController);
 
             //setup the menu controller map
             Map<Integer, Controller> menuMap = new HashMap<>();
