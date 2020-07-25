@@ -1,5 +1,7 @@
 package org.academiadecodigo.felinux.view;
 
+import java.security.PublicKey;
+
 public class Messages {
     /**
      * Menu options messages
@@ -7,6 +9,10 @@ public class Messages {
     public static final String STARTGAME = "The game start";
     public static final String INSTRUCTIONS = "Instructions";
     public static final String EXIT = "Game Ends";
+
+    public static final String MENU_VIEW = "Please choose an option.";
+    public static final String MENU_VIEW_ERROR = "Invalid option.";
+
 
     /**
      * Game messages

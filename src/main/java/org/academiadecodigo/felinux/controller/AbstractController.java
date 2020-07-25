@@ -11,4 +11,8 @@ public abstract class AbstractController implements Controller {
         this.view = view;
     }
 
+    @Override
+    public void execute () {
+        view.show();
+    }
 }
