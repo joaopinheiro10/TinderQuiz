@@ -1,7 +1,9 @@
 package org.academiadecodigo.felinux.server;
 
 import org.academiadecodigo.bootcamp.Prompt;
+import org.academiadecodigo.felinux.Bootstrap;
 import org.academiadecodigo.felinux.controller.Controller;
+import org.academiadecodigo.felinux.controller.GameController;
 import org.academiadecodigo.felinux.controller.LoginController;
 import org.academiadecodigo.felinux.model.client.Client;
 
@@ -16,11 +18,10 @@ import java.net.Socket;
 public class ClientConnection implements Runnable {
 
     private final Socket socket;
-    private final Client client;
-    private LoginController  controller;
+    private GameController gameController;
     private PrintStream printStream;
     private InputStream inputStream;
-    private Prompt prompt;
+    private int id;
 
 
     /**
@@ -28,9 +29,9 @@ public class ClientConnection implements Runnable {
      * between server and client
      * @param socket represents the socket created by the ServerSocket.accept();
      */
-    public ClientConnection(Socket socket) {
+    public ClientConnection(Socket socket, int id) {
         this.socket = socket;
-        client = new Client();
+        this.id = id;
     }
 
     /**
@@ -42,12 +43,17 @@ public class ClientConnection implements Runnable {
     public void run() {
 
         createStreams();
+
+        new Bootstrap(id, inputStream, printStream, gameController);
+
+
+        /*
         prompt = createPrompt();
 
         send("Hello. You matter!");
 
         controller.execute();
-
+*/
 
     }
 
@@ -107,35 +113,13 @@ public class ClientConnection implements Runnable {
         return inputStream;
     }
 
-    /**
-     * Method to get the client of this clientConnection
-     * @return Client
-     */
-    public Client getClient() {
-        return client;
-    }
-
-    /**
-     * Method to get the controller of this clientConnection
-     * @return Controller
-     */
-    public Controller getController() {
-        return controller;
-    }
 
     /**
      * Sets the property controller of this object
-     * @param controller
+     * @param gameController
      */
-    public void setController(LoginController controller) {
-        this.controller = controller;
+    public void setGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 
-    /**
-     * Gets the prompt of this object
-     * @return a Prompt
-     */
-    public Prompt getPrompt() {
-        return prompt;
-    }
 }

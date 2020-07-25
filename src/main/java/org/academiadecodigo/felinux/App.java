@@ -31,16 +31,20 @@ public class App {
         }*/
 
         Server server = null;
+        GameController gameController = new GameController();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Port: ");
         int port = Integer.parseInt(scanner.nextLine());
 
         try {
 
-            Prompt prompt = new Prompt(System.in, System.out);
+            //Prompt prompt = new Prompt(System.in, System.out);
 
             server = new Server(port);
-
+            server.setGameController(gameController);
+            gameController.setServer(server);
+            server.start();
+/*
             // setup login controller and view
             LoginView loginView = new LoginView();
             LoginController  loginController = new LoginController();
@@ -74,7 +78,7 @@ public class App {
 
             //server.getClientConnectionList().get(0).setController(loginController);
             server.start(loginController);
-
+*/
         } catch (IOException exception){
 
             exception.getStackTrace();

@@ -25,9 +25,9 @@ public class MenuView extends AbstractView {
         menuScanner.setMessage(Messages.MENU_VIEW);
         menuScanner.setError(Messages.MENU_VIEW_ERROR);
 
-        prompt = new Prompt(server.getClientConnectionList().get(0).getInputStream(),
-                server.getClientConnectionList().get(0).getPrintStream());
+
         menuController.optionHandler(prompt.getUserInput(menuScanner));
 
     }
+
 }

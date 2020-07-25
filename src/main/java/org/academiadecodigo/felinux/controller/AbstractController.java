@@ -6,7 +6,8 @@ import org.academiadecodigo.felinux.view.View;
 public abstract class AbstractController implements Controller {
 
     protected View view;
-    protected GameService gameService;
+    protected GameController gameController;
+    protected int id;
 
     public void setView(View view) {
         this.view = view;
@@ -17,7 +18,11 @@ public abstract class AbstractController implements Controller {
         view.show();
     }
 
-    public void setGameService(GameService gameService) {
-        this.gameService = gameService;
+    public void setGameController(GameController gameController) {
+        this.gameController = gameController;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

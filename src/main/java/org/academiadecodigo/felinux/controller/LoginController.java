@@ -16,4 +16,8 @@ public class LoginController extends AbstractController {
 
     public void setOK(String userInput) {
     }
+
+    public void setName(String userInput) {
+        gameController.changeName(id, userInput);
+    }
 }

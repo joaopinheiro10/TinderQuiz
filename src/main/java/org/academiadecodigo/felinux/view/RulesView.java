@@ -27,8 +27,9 @@ public class RulesView extends AbstractView{
     @Override
     public void show() {
 
-        server.getClientConnectionList().get(0).send(Messages.GAMERULES);
+        printStream.println(Messages.GAMERULES);
 
+        System.out.println("estou nas rules men");
         backToMenu();
 
     }
@@ -40,8 +41,7 @@ public class RulesView extends AbstractView{
         MenuInputScanner menu = new MenuInputScanner(options);
         menu.setMessage(Messages.MENU_VIEW);
         menu.setError(Messages.MENU_VIEW_ERROR);
-        prompt = new Prompt(server.getClientConnectionList().get(0).getInputStream(),
-                server.getClientConnectionList().get(0).getPrintStream());
+
         prompt.getUserInput(menu);
     }
 }
