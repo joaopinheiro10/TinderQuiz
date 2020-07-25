@@ -1,5 +1,6 @@
 package org.academiadecodigo.felinux.server;
 
+import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.felinux.controller.Controller;
 import org.academiadecodigo.felinux.controller.LoginController;
 import org.academiadecodigo.felinux.model.client.Client;
@@ -14,12 +15,13 @@ import java.net.Socket;
  */
 public class ClientConnection implements Runnable {
 
-    private Socket socket;
-    private Server server;
-    private Client client;
+    private final Socket socket;
+    private final  Server server;
+    private final Client client;
     private LoginController  controller;
     private PrintStream printStream;
     private InputStream inputStream;
+    private Prompt prompt;
 
 
     /**
@@ -43,10 +45,11 @@ public class ClientConnection implements Runnable {
     public void run() {
 
         createStreams();
+        prompt = createPrompt();
 
         send("Hello. You matter!");
 
-            controller.execute();
+        controller.execute();
 
 
     }
@@ -78,6 +81,10 @@ public class ClientConnection implements Runnable {
      * Creates a new prompt
      * @return a new Prompt
      */
+    private Prompt createPrompt() {
+        return new Prompt(inputStream, printStream);
+    }
+
     private void createStreams() {
         try {
             printStream = new PrintStream(socket.getOutputStream());
@@ -127,4 +134,11 @@ public class ClientConnection implements Runnable {
         this.controller = controller;
     }
 
+    /**
+     * Gets the prompt of this object
+     * @return a Prompt
+     */
+    public Prompt getPrompt() {
+        return prompt;
+    }
 }
