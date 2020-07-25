@@ -5,7 +5,6 @@ import org.academiadecodigo.felinux.controller.*;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.view.LoginView;
 import org.academiadecodigo.felinux.view.MenuView;
-import org.academiadecodigo.felinux.view.RulesView;
 import org.academiadecodigo.felinux.view.UserOptions;
 
 import java.io.IOException;
@@ -48,12 +47,11 @@ public class App {
             loginController.setView(loginView);
             loginView.setLoginController(loginController);
 
-
-
             // setup menu controller and view
             MenuController menuController = new MenuController();
             MenuView menuView = new MenuView(); // TODO which prompt?
-            menuView.setPrompt(prompt);
+            menuView.setServer(server);
+            //menuView.setPrompt(prompt);
             menuView.setMenuController(menuController);
             menuController.setView(menuView);
             loginController.setNextController(menuController);
@@ -68,11 +66,6 @@ public class App {
             menuMap.put(UserOptions.INSTRUCTIONS.getOption(), rulesController);
 
             menuController.setControllerMap(menuMap);
-
-            //setup the rules and waiting controllers
-            RulesView rulesView = new RulesView();
-            rulesController.setView(rulesView);
-            rulesView.setRulesController(rulesController);
 
             //server.getClientConnectionList().get(0).setController(loginController);
             server.start(loginController);
