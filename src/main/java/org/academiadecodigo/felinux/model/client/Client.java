@@ -16,4 +16,9 @@ public class Client {
     public int getAnswerNumber() {
         return answerNumber;
     }
+
+    public void setName(String userInput) {
+        name = userInput;
+        System.out.println(name);
+    }
 }

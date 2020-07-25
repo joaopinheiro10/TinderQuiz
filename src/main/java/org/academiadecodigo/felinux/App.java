@@ -1,7 +1,9 @@
 package org.academiadecodigo.felinux;
 
 import org.academiadecodigo.bootcamp.Prompt;
+import org.academiadecodigo.felinux.controller.LoginController;
 import org.academiadecodigo.felinux.server.Server;
+import org.academiadecodigo.felinux.view.LoginView;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -25,16 +27,23 @@ public class App {
             e.printStackTrace();
         }*/
 
-
+        Server server = null;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Port: ");
         int port = Integer.parseInt(scanner.nextLine());
 
         try {
 
-            new Server(port).start();
+            server = new Server(port);
+            LoginView loginView = new LoginView();
+            LoginController  loginController = new LoginController();
+            loginView.setServer(server);
+            loginController.setView(loginView);
+            loginView.setLoginController(loginController);
+            //server.getClientConnectionList().get(0).setController(loginController);
+            server.start(loginController);
 
-        } catch (IOException exception) {
+        } catch (IOException exception){
 
             exception.getStackTrace();
 

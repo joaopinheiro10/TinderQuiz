@@ -1,6 +1,7 @@
 package org.academiadecodigo.felinux.server;
 
 import org.academiadecodigo.felinux.controller.Controller;
+import org.academiadecodigo.felinux.controller.LoginController;
 import org.academiadecodigo.felinux.model.client.Client;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class ClientConnection implements Runnable {
     private Socket socket;
     private Server server;
     private Client client;
-    private Controller controller;
+    private LoginController  controller;
     private PrintStream printStream;
     private InputStream inputStream;
 
@@ -45,9 +46,8 @@ public class ClientConnection implements Runnable {
 
         send("Hello. You matter!");
 
-        while(!socket.isClosed()) {
             controller.execute();
-        }
+
 
     }
 
@@ -123,7 +123,7 @@ public class ClientConnection implements Runnable {
      * Sets the property controller of this object
      * @param controller
      */
-    public void setController(Controller controller) {
+    public void setController(LoginController controller) {
         this.controller = controller;
     }
 

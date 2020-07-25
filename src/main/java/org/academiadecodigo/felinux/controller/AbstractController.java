@@ -4,6 +4,11 @@ import org.academiadecodigo.felinux.view.View;
 
 public abstract class AbstractController implements Controller {
 
-    private View view;
+    protected View view;
+    Controller nextController;
+
+    public void setView(View view) {
+        this.view = view;
+    }
 
 }

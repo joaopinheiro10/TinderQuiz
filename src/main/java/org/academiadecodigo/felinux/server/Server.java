@@ -1,6 +1,8 @@
 package org.academiadecodigo.felinux.server;
 
 
+import org.academiadecodigo.felinux.controller.LoginController;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -28,7 +30,7 @@ public class Server {
 
     }
 
-    public void start() {
+    public void start(LoginController loginController) {
 
         while (true) {
 
@@ -38,6 +40,7 @@ public class Server {
                 Socket clientSocket = this.serverSocket.accept();
                 System.out.println("Connected to IP: " + clientSocket.getInetAddress() + " at Port: " + clientSocket.getPort());
                 ClientConnection clientConnection = new ClientConnection(this, clientSocket);
+                clientConnection.setController(loginController);
                 clientConnectionList.add(clientConnection);
                 threadPool.submit(clientConnection);
 
@@ -51,4 +54,7 @@ public class Server {
 
     }
 
+    public List<ClientConnection> getClientConnectionList() {
+        return clientConnectionList;
+    }
 }
