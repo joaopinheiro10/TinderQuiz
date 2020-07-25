@@ -47,12 +47,11 @@ public class App {
             loginController.setView(loginView);
             loginView.setLoginController(loginController);
 
-
-
             // setup menu controller and view
             MenuController menuController = new MenuController();
             MenuView menuView = new MenuView(); // TODO which prompt?
-            menuView.setPrompt(prompt);
+            menuView.setServer(server);
+            //menuView.setPrompt(prompt);
             menuView.setMenuController(menuController);
             menuController.setView(menuView);
             loginController.setNextController(menuController);
@@ -67,9 +66,6 @@ public class App {
             menuMap.put(UserOptions.INSTRUCTIONS.getOption(), rulesController);
 
             menuController.setControllerMap(menuMap);
-
-
-
 
             //server.getClientConnectionList().get(0).setController(loginController);
             server.start(loginController);
