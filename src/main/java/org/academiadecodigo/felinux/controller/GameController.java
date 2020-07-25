@@ -26,6 +26,8 @@ public class GameController implements Controller {
     @Override
     public void execute() {
         question = gameService.generateQuestion();
+        System.out.println(question);
+        whoAnswer();
 
     }
 
@@ -38,11 +40,18 @@ public class GameController implements Controller {
     }
 
     public void whoAnswer() {
+        System.out.println(bootstrapMap.size());
         for (int key : bootstrapMap.keySet()) {
+            System.out.println("Key: " + key + "|" + "current player: " + gameService.getCurrentPlayer());
             if (key != gameService.getCurrentPlayer()) {
+                System.out.println("estou dentro do if");
                 bootstrapMap.get(key).getWaitingController().execute();
             }
         }
+        System.out.println("estou aqui");
+        System.out.println(gameService);
+        System.out.println(gameService.getCurrentPlayer());
+        System.out.println(bootstrapMap.get(gameService.getCurrentPlayer()).getAnsweringController());
         bootstrapMap.get(gameService.getCurrentPlayer()).getAnsweringController().execute();
     }
 }

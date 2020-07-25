@@ -46,6 +46,9 @@ public class Bootstrap {
         wireMenu();
         wireRules();
         setupMenuMap();
+        wireWaiting();
+        wireAnswer();
+        gameController.addBootstrap(id,this);
 
         loginController.execute();
     }
@@ -86,21 +89,22 @@ public class Bootstrap {
     }
     private void wireAnswer() {
 
-        rulesController = new RulesController();
-        rulesView = new RulesView();
-        rulesController.setView(rulesView);
-        rulesView.setRulesController(rulesController);
-        rulesView.setPrintStream(printStream);
-        rulesView.setPrompt(prompt);
+        answeringController = new AnsweringController();
+        answeringView = new AnsweringView();
+        answeringController.setView(answeringView);
+        answeringView.setAnsweringController(answeringController);
+        answeringView.setPrompt(prompt);
+
     }
+
     private void wireWaiting() {
 
-        rulesController = new RulesController();
-        rulesView = new RulesView();
-        rulesController.setView(rulesView);
-        rulesView.setRulesController(rulesController);
-        rulesView.setPrintStream(printStream);
-        rulesView.setPrompt(prompt);
+        waitingController = new WaitingController();
+        waitingView = new WaitingView();
+        waitingController.setView(waitingView);
+        waitingView.setWaitingController(waitingController);
+        waitingView.setPrompt(prompt);
+
     }
 
     private void setupMenuMap() {

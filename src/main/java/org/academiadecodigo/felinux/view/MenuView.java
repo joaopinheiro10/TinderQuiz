@@ -8,14 +8,9 @@ import org.academiadecodigo.felinux.server.Server;
 public class MenuView extends AbstractView {
 
     private MenuController menuController;
-    private Server server;
 
     public void setMenuController(MenuController menuController) {
         this.menuController = menuController;
-    }
-
-    public void setServer ( Server server ) {
-        this.server = server;
     }
 
     @Override

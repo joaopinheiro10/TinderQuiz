@@ -12,14 +12,6 @@ public class RulesView extends AbstractView{
 
     RulesController rulesController;
 
-    //Just for testing purposes
-    Server server;
-
-    public void setServer(Server server) {
-        this.server = server;
-    }
-    // till here
-
     public void setRulesController(RulesController rulesController) {
         this.rulesController = rulesController;
     }
