@@ -2,13 +2,14 @@ package org.academiadecodigo.felinux.view;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
+import org.academiadecodigo.felinux.controller.Controller;
 import org.academiadecodigo.felinux.controller.LoginController;
 import org.academiadecodigo.felinux.server.Server;
 
 public class LoginView extends AbstractView {
 
-    LoginController loginController;
-    Server server;
+    private LoginController loginController;
+    private Server server;
 
     public void setServer(Server server) {
         this.server = server;
