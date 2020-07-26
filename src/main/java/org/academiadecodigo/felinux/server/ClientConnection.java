@@ -1,12 +1,8 @@
 package org.academiadecodigo.felinux.server;
 
-import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.felinux.Bootstrap;
 import org.academiadecodigo.felinux.controller.GameController;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintStream;
 import java.net.Socket;
 
 /**
@@ -16,8 +12,7 @@ public class ClientConnection implements Runnable {
 
     private final Socket socket;
     private GameController gameController;
-    private PrintStream printStream;
-    private InputStream inputStream;
+
     private final int id;
 
 
@@ -39,31 +34,11 @@ public class ClientConnection implements Runnable {
     @Override
     public void run() {
 
-        createStreams();
 
-        Bootstrap bootstrap = new Bootstrap(id, inputStream, printStream, gameController);
-
+        new Bootstrap(id, socket, gameController);
 
     }
 
-    private void createStreams() {
-        try {
-            printStream = new PrintStream(socket.getOutputStream());
-            inputStream = socket.getInputStream();
-        } catch (IOException ioe) {
-            System.err.println("Error: " + ioe.getMessage());
-        }
-    }
-
-    public void closeSocket() {
-
-        try {
-            this.socket.close();
-        } catch (IOException exception) {
-            exception.getStackTrace();
-        }
-
-    }
 
     /**
      * Sets the property controller of this object
