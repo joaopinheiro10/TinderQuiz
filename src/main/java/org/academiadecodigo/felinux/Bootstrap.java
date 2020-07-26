@@ -39,6 +39,7 @@ public class Bootstrap {
 
     private BroadcastView broadcastView;
 
+    private ScoreView scoreView;
 
     private WelcomeView welcomeView;
 
@@ -60,6 +61,7 @@ public class Bootstrap {
         wireRules();
         wireWaitForPlayers();
         setupMenuMap();
+        wireScore();
         wireWaiting();
         wireAnswer();
         wireBroadcast();
@@ -127,6 +129,13 @@ public class Bootstrap {
         waitForPlayersController.setWelcomeView(welcomeView);
     }
 
+    private void wireScore() {
+
+        scoreView = new ScoreView();
+        scoreView.setPrintStream(printStream);
+        scoreView.setGameController(gameController);
+    }
+
     private void wireAnswer() {
 
         answeringController = new AnsweringController();
@@ -137,6 +146,7 @@ public class Bootstrap {
         answeringView.setPrintStream(printStream);
         answeringController.setGameController(gameController);
         answeringController.setWelcomeView(welcomeView);
+        answeringController.setScoreView(scoreView);
     }
 
     private void wireWaiting() {
@@ -149,6 +159,7 @@ public class Bootstrap {
         waitingView.setPrintStream(printStream);
         waitingController.setGameController(gameController);
         waitingController.setWelcomeView(welcomeView);
+        waitingController.setScoreView(scoreView);
     }
 
     private void wireBroadcast() {

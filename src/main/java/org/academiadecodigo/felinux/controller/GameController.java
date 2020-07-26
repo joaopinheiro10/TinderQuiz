@@ -115,58 +115,65 @@ public class GameController implements Controller {
         }
     }
 
-        public boolean checkAnswer (String answer){
-            sendAnswertoPlayers(answer);
-            lastAnswer = gameService.checkAnswer(answer);
-            return lastAnswer;
-        }
+    public boolean checkAnswer (String answer){
+        sendAnswertoPlayers(answer);
+        lastAnswer = gameService.checkAnswer(answer);
+        return lastAnswer;
+    }
 
-        public void sendAnswertoPlayers (String answer){
+    public void sendAnswertoPlayers (String answer){
 
-            for (int key : bootstrapMap.keySet()) {
+        for (int key : bootstrapMap.keySet()) {
 
-                if (key != gameService.getCurrentIdPlayer()) {
-                    bootstrapMap.get(key).getBroadcastView().showMatch(answer);
-                }
-
+            if (key != gameService.getCurrentIdPlayer()) {
+                bootstrapMap.get(key).getBroadcastView().showMatch(answer);
             }
 
-        }
-
-        public void upDateResult ( boolean answer){
-            gameService.getCurrentPlayer().updateScore(answer);
-        }
-
-        public String getCurrentPlayerName () {
-            return gameService.getCurrentPlayer().getName();
-        }
-
-        public void addPlayerReady () {
-            numPlayersReady++;
-
-            if (numPlayersReady == 2) {
-
-                execute();
-            }
-        }
-
-        public void removePlayer ( int id){
-
-            removePlayerFromBootstrap(id);
-            gameService.removePlayer(id);
-
-        }
-
-        private void removePlayerFromBootstrap ( int playerID){
-
-            this.bootstrapMap.remove(playerID);
-
-        }
-
-        public int getRoundNumber () {
-            return gameService.getCurrentRoundNumber();
         }
 
     }
+
+    public void upDateResult ( boolean answer){
+        gameService.getCurrentPlayer().updateScore(answer);
+    }
+
+    public String getCurrentPlayerName () {
+        return gameService.getCurrentPlayer().getName();
+    }
+
+    public void addPlayerReady () {
+        numPlayersReady++;
+
+        if (numPlayersReady == 2) {
+
+            execute();
+        }
+    }
+
+    public void removePlayer ( int id){
+
+        removePlayerFromBootstrap(id);
+        gameService.removePlayer(id);
+
+    }
+
+    private void removePlayerFromBootstrap ( int playerID){
+
+        this.bootstrapMap.remove(playerID);
+
+    }
+
+    public int getRoundNumber () {
+        return gameService.getCurrentRoundNumber();
+    }
+
+
+
+    public LinkedList<Client> getClients() {
+
+        return server.getClients();
+    }
+}
+
 
 
