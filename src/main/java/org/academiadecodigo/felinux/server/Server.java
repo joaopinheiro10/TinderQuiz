@@ -18,9 +18,9 @@ public class Server {
     private static final int NUMBER_OF_THREADS = 4;
     private final ExecutorService threadPool;
 
-    private HashMap<Integer, Client> clientMap = new HashMap<>();
+    private final HashMap<Integer, Client> clientMap = new HashMap<>();
 
-    private ServerSocket serverSocket;
+    private final ServerSocket serverSocket;
 
     GameController gameController;
 

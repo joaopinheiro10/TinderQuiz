@@ -17,8 +17,6 @@ public class RectangleBoxText {
         builder.element(new Rectangle());
         builder.element(new Text(text, 1, 3, 100, 10));
         ICanvas canvas = render.render(builder.build());
-        String s = canvas.getText();
-        System.out.println(s);
-        return s;
+        return canvas.getText();
     }
 }

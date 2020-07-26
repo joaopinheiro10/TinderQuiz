@@ -6,8 +6,8 @@ public enum UserOptions {
     INSTRUCTIONS(2,Messages.INSTRUCTIONS),
     EXIT(3,Messages.EXIT);
 
-    private int option;
-    private String message;
+    private final int option;
+    private final String message;
 
     UserOptions(int option, String message) {
         this.option = option;

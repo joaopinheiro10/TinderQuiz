@@ -18,7 +18,7 @@ public class ClientConnection implements Runnable {
     private GameController gameController;
     private PrintStream printStream;
     private InputStream inputStream;
-    private int id;
+    private final int id;
 
 
     /**

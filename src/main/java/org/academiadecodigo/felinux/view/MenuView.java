@@ -1,9 +1,7 @@
 package org.academiadecodigo.felinux.view;
 
-import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.felinux.controller.MenuController;
-import org.academiadecodigo.felinux.server.Server;
 
 public class MenuView extends AbstractView {
 
