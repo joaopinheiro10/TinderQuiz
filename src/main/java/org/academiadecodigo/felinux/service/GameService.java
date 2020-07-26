@@ -62,20 +62,20 @@ public class GameService {
 
         for (Client client : server.getClientMap().values()) {
 
-            if (client.getNumberOfCorrectAnswers() <= 3 ) {
-                dumb.add(client);
+            if (client.getNumberOfCorrectAnswers() == 10 ) {
+                genious.add(client);
             }
 
-            if (client.getNumberOfCorrectAnswers() <= 6 ) {
-                average.add(client);
-            }
-
-            if (client.getNumberOfCorrectAnswers() <= 9 ) {
+            if (client.getNumberOfCorrectAnswers() >= 6 ) {
                 smart.add(client);
             }
 
-            if (client.getNumberOfCorrectAnswers() == 10 ) {
-                genious.add(client);
+            if (client.getNumberOfCorrectAnswers() >= 3 ) {
+                average.add(client);
+            }
+
+            if (client.getNumberOfCorrectAnswers() < 3 ) {
+                dumb.add(client);
             }
 
         }

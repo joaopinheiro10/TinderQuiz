@@ -4,11 +4,9 @@ import org.academiadecodigo.felinux.Bootstrap;
 import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.service.GameService;
-import sun.awt.image.ImageWatched;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Set;
 
 public class GameController implements Controller {
 
@@ -85,6 +83,13 @@ public class GameController implements Controller {
     private void broadcastMatch ( LinkedList<LinkedList<Client>> allMatch ) {
 
         for (LinkedList<Client> linkedList : allMatch) {
+
+            System.out.println(linkedList.size());
+
+            if (linkedList.size()<=1) {
+                bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch("You have no matches! Loser.");
+                continue;
+            }
 
             for (Client client : linkedList) {
 
