@@ -81,7 +81,11 @@ public class GameController implements Controller {
 
         for (LinkedList<Client> linkedList : allMatch) {
 
-            if (linkedList.size()<=1) {
+            if(linkedList.size() < 1) {
+                continue;
+            }
+
+            if (linkedList.size() ==1) {
                 bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch("You have no matches! Loser.");
                 continue;
             }

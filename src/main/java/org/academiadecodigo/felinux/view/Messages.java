@@ -48,4 +48,3 @@ public class Messages {
 
     public static final String WAITINGCONNECTIONS = Colors.BLUE + "Waiting to save someone's life." + Colors.NOCOLOR;
 }
-

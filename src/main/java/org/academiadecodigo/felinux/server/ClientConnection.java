@@ -46,43 +46,7 @@ public class ClientConnection implements Runnable {
 
         Bootstrap bootstrap = new Bootstrap(id, inputStream, printStream, gameController);
 
-        System.out.println("Vim fechar a socket");
-        closeSocket();
 
-
-
-
-        /*
-        prompt = createPrompt();
-
-        send("Hello. You matter!");
-
-        controller.execute();
-*/
-
-    }
-
-    /*public void listen() {
-
-        byte[] buffer = new byte[1024];
-        StringBuilder message = new StringBuilder();
-
-            try {
-                while (((inputStream.read(buffer)) != -1)) {
-                    message.append(buffer);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-*/
-
-    /**
-     * Sends a message to the client connected
-     * @param message
-     */
-    public void send(String message) {
-        printStream.println(message);
     }
 
     /**
@@ -111,24 +75,6 @@ public class ClientConnection implements Runnable {
         }
 
     }
-
-
-    /**
-     * Returns ouput stream of this connection
-     * @return PrintStream
-     */
-    public PrintStream getPrintStream() {
-        return printStream;
-    }
-
-    /**
-     * Return input stream of this connection
-     * @return InputStream
-     */
-    public InputStream getInputStream() {
-        return inputStream;
-    }
-
 
     /**
      * Sets the property controller of this object

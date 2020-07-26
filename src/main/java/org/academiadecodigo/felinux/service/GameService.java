@@ -23,11 +23,9 @@ public class GameService {
 
         questionNumber = (int) (Math.floor(Math.random() * Quiz.values().length));
 
-        for (Integer questionNr : questionList) {
-            if(questionNr == questionNumber) {
+        if (questionList.contains(questionNumber)) {
                 System.out.println("entrei aqui");
-                this.generateQuestion();
-            }
+                generateQuestion();
         }
 
         questionList.add(questionNumber);
@@ -50,8 +48,6 @@ public class GameService {
         LinkedList<LinkedList<Client>> allMatchesList = new LinkedList<>();
 
         for (Client client : server.getClientMap().values()) {
-
-            System.out.println(client.getName() + "has " + client.getNumberOfCorrectAnswers());
 
             if (client.getNumberOfCorrectAnswers() == 10 ) {
                 genious.add(client);
