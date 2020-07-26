@@ -14,7 +14,10 @@ public class Messages {
     public static final String MENU_VIEW_ERROR = "Invalid option.";
 
     public static final String RIGHT = "RIGHT";
-    public static final String  WRONG= "WRONG";
+    public static final String WRONG= "WRONG";
+
+    public static final String WAITING_FOR_PLAYERS = "The game will start when all players are ready.\n" +
+            "Please wait.";
 
     /**
      * Game messages
@@ -31,5 +34,6 @@ public class Messages {
             "5-The game ends after x rounds (one being selected at the beginning - with minimum and maximum)\n" +
             "6-After the end, verification or correspondence (scoring interval) between the players\n" +
             "7-Chat idea - style bar (optional)";
+
 }
 
