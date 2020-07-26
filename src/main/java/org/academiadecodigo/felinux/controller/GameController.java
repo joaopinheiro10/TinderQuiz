@@ -4,6 +4,7 @@ import org.academiadecodigo.felinux.Bootstrap;
 import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.service.GameService;
+import static org.academiadecodigo.felinux.service.GameService.ROUND_NUMBERS;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -18,8 +19,6 @@ public class GameController implements Controller {
     private int numPlayersReady = 0;
 
     private boolean lastAnswer;
-    private final int ROUND_NUMBER = 10;
-    private int currentRoundNumber=0;
 
 
     public void changeName(int id, String name) {
@@ -38,12 +37,11 @@ public class GameController implements Controller {
     @Override
     public void execute() {
 
-        while (currentRoundNumber<ROUND_NUMBER) {
+        while (gameService.getCurrentRoundNumber() < ROUND_NUMBERS) {
 
             question = gameService.generateQuestion();
             whoAnswer();
             broadcast();
-            currentRoundNumber++;
         }
 
         broadcastMatch(gameService.match());

@@ -9,6 +9,8 @@ import java.util.LinkedList;
 
 public class GameService {
 
+    public static final int ROUND_NUMBERS = 10;
+    public int currentRoundNumber = 0;
     private Server server;
     private String currentQuestion;
     private int questionNumber;
@@ -89,6 +91,7 @@ public class GameService {
 
     public void upDateCurrentPlayer() {
         if((server.getClientMap().size() -1) == currentIdPlayer){
+            currentRoundNumber++;
             currentIdPlayer = 0;
             return;
         }
@@ -100,5 +103,9 @@ public class GameService {
         this.server.getClientMap().remove(playerToRemove);
         System.out.println("removi o player do client map, player nº " + playerToRemove);
 
+    }
+
+    public int getCurrentRoundNumber() {
+        return currentRoundNumber;
     }
 }
