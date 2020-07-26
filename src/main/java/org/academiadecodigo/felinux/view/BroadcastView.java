@@ -17,9 +17,9 @@ public class BroadcastView extends AbstractView{
 
     public void show(String name, boolean lastAnswer) {
         if (lastAnswer) {
-            printStream.println(name + " " + Colors.GREEN + Messages.RIGHT + Colors.NOCOLOR);
+            printStream.println(name + " " + Messages.RIGHT);
         } else {
-            printStream.println(name + " " + Colors.RED + Messages.WRONG + Colors.NOCOLOR);
+            printStream.println(name + " " + Messages.WRONG);
         }
     }
 
