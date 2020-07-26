@@ -5,14 +5,17 @@ import org.academiadecodigo.felinux.controller.*;
 import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.view.*;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bootstrap {
 
     private GameController gameController;
+    private Socket socket;
     private InputStream inputStream;
     private PrintStream printStream;
     private Prompt prompt;
@@ -45,13 +48,14 @@ public class Bootstrap {
 
 
     private ExitController exitController;
-    private ExitView exitView;
 
 
-    public Bootstrap(int id, InputStream inputStream, PrintStream printStream, GameController gameController) {
+    public Bootstrap(int id, Socket socket, GameController gameController) {
         this.id = id;
-        this.inputStream = inputStream;
-        this.printStream = printStream;
+        this.socket = socket;
+
+        createStreams();
+
         this.prompt = new Prompt(inputStream, printStream);
         this.gameController = gameController;
 
@@ -74,6 +78,25 @@ public class Bootstrap {
 
 
 
+    private void createStreams() {
+        try {
+            printStream = new PrintStream(socket.getOutputStream());
+            inputStream = socket.getInputStream();
+        } catch (IOException ioe) {
+            System.err.println("Error: " + ioe.getMessage());
+        }
+    }
+
+    public void closeSocket() {
+
+        try {
+            this.socket.close();
+            System.out.println("socket closed!");
+        } catch (IOException exception) {
+            exception.getStackTrace();
+        }
+
+    }
 
     private void wireWelcome() {
 
@@ -172,13 +195,10 @@ public class Bootstrap {
     private void wireExit() {
 
         exitController = new ExitController();
-        exitView = new ExitView();
-        exitController.setView(exitView);
-        exitView.setExitController(exitController);
-        exitView.setPrintStream(printStream);
         exitController.setGameController(gameController);
         menuController.setExitController(exitController);
         exitController.setId(id);
+        exitController.setBootstrap(this);
 
     }
 
@@ -186,6 +206,7 @@ public class Bootstrap {
         Map<Integer, Controller> menuMap = new HashMap<>();
         menuMap.put(UserOptions.START_GAME.getOption(), waitForPlayersController);
         menuMap.put(UserOptions.INSTRUCTIONS.getOption(), rulesController);
+        menuMap.put(UserOptions.EXIT.getOption(), exitController);
 
         menuController.setControllerMap(menuMap);
     }
