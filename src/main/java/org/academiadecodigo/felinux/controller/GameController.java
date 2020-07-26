@@ -5,6 +5,7 @@ import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.service.GameService;
 
+import static org.academiadecodigo.felinux.service.GameService.NUMBER_OF_PLAYERS;
 import static org.academiadecodigo.felinux.service.GameService.ROUND_NUMBERS;
 
 import org.academiadecodigo.felinux.view.Colors;
@@ -51,7 +52,23 @@ public class GameController implements Controller {
         endGame();
         broadcastMatch(gameService.match());
 
+        closeEverything();
     }
+
+
+    private void closeEverything() {
+
+        numPlayersReady = 0;
+
+        server.getClientMap().clear();
+
+        for ( Bootstrap bootstrap : bootstrapMap.values()) {
+            bootstrap.closeSocket();
+        }
+
+        bootstrapMap.clear();
+    }
+
 
     public String getQuestion() {
         return question;
@@ -152,9 +169,10 @@ public class GameController implements Controller {
     }
 
     public void addPlayerReady () {
+
         numPlayersReady++;
 
-        if (numPlayersReady == 4) {
+        if (numPlayersReady == NUMBER_OF_PLAYERS) {
 
             execute();
         }

@@ -17,7 +17,9 @@ public class ScoreView extends AbstractView {
         LinkedList<Client> clients = gameController.getClients();
 
         for (Client client : clients) {
-            printStream.print(Colors.CYAN + "\t" + client.getName() + Colors.NOCOLOR);
+            printStream.print(Colors.CYAN + "\t" +
+                    ( client.getName().length() < 7 ? client.getName() : client.getName().substring(0, 7) ) +
+                    Colors.NOCOLOR);
         }
         printStream.println();
 

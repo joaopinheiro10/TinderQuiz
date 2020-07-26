@@ -59,7 +59,7 @@ public class Messages {
     public static final String WAITINGCONNECTIONS = Colors.BLUE + "Waiting to save someone's life." + Colors.NOCOLOR;
 
     public static final String NO_MATCH = Colors.RED + "You have no matches! Loser." + Colors.NOCOLOR;
-    public static final String MATCH = Colors.GREEN + "YOU HAVE A MATCH WITH THE FOLLOWING PLAYERS: \n\n" + Colors.NOCOLOR;
+    public static final String MATCH = Colors.GREEN + "\nWe're searching for your matches...\n\n" + Colors.NOCOLOR;
     public static final String AVERAGE = Colors.BLUE + "You're an average person and still got no matches, how's that like?" + Colors.NOCOLOR;
     public static final String GENIUS = Colors.CYAN + "You're so smart that you have no matches. Dumb it down, please" + Colors.NOCOLOR;
 }
