@@ -28,10 +28,10 @@ public class LoginView extends AbstractView {
 
     private void checkNumber() {
 
-        IntegerInputScanner phone = new IntegerInputScanner();
+        StringInputScanner phone = new StringInputScanner();
         phone.setMessage(Messages.PHONE_NUMBER);
         phone.setError(Messages.PHONE_NUMBER_WRONG);
-        String phoneNumber = prompt.getUserInput(phone).toString();
+        String phoneNumber = prompt.getUserInput(phone);
 
         if (phoneNumber.matches(regexPattern)) {
             loginController.setPhoneNumber(phoneNumber);
