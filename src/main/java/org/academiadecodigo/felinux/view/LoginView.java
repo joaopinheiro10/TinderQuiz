@@ -20,8 +20,6 @@ public class LoginView extends AbstractView {
         StringInputScanner scanner = new StringInputScanner();
         scanner.setError("");
 
-        printStream.println(Messages.WELCOME);
-
         scanner.setMessage(Messages.USERNAME);
 
         scanner.setError("");

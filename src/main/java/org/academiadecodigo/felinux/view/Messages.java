@@ -10,7 +10,7 @@ public class Messages {
      */
 
     public static final String WELCOME = Colors.GREEN + "\n\n" +
-            ASCIIArtGenerator.printTextArt("Welcome To Tinder Quiz", 10)
+            ASCIIArtGenerator.printTextArt("Tinder Quiz", 10)
             + Colors.NOCOLOR;
 
     public static final String MENU_VIEW = Colors.BLUE + "Please choose an option:" + Colors.NOCOLOR;

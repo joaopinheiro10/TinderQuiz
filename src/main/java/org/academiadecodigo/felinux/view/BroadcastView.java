@@ -21,6 +21,11 @@ public class BroadcastView extends AbstractView{
         } else {
             printStream.println(name + " " + Messages.WRONG);
         }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void showMatch ( String message ) {
