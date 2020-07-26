@@ -25,7 +25,7 @@ public class LoginView extends AbstractView {
                 //server.getClientConnectionList().get(0).getPrintStream());
         StringInputScanner scanner = new StringInputScanner();
         try {
-            scanner.setMessage(ASCIIArtGenerator.printTextArt(Messages.STARTGAME,10));
+            scanner.setMessage(Messages.WELCOME);
         } catch (Exception e) {
             e.printStackTrace();
         }

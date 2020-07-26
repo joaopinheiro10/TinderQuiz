@@ -1,5 +1,7 @@
 package org.academiadecodigo.felinux.view;
 
+import org.academiadecodigo.felinux.utilits.RectangleBoxText;
+
 public enum UserOptions {
 
     START_GAME(1,Messages.STARTGAME),
