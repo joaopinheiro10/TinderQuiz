@@ -28,7 +28,7 @@ public class BroadcastView extends AbstractView{
         }
     }
 
-    public void showMatch ( String message ) {
-        printStream.println(Messages.ANSWER_WAS + message);
+    public void showMatch (String message ) {
+        printStream.println(Colors.BLUE + gameController.getCurrentPlayerName() + Colors.NOCOLOR + Messages.ANSWER_WAS + message);
     }
 }

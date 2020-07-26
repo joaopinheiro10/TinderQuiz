@@ -11,7 +11,7 @@ public class GameService {
 
     public static final int ROUND_NUMBERS = 5;
     public int currentRoundNumber = 1;
-    private Server server;
+    private final Server server;
     private String currentQuestion;
     private int questionNumber;
     private int currentIdPlayer = 0;

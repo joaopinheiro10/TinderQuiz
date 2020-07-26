@@ -14,13 +14,15 @@ import java.util.Map;
 
 public class Bootstrap {
 
-    private GameController gameController;
-    private Socket socket;
+
+    private final GameController gameController;
+    private final Socket socket;
     private InputStream inputStream;
     private PrintStream printStream;
-    private Prompt prompt;
+    private final Prompt prompt;
+
     private int id;
-    private Client client = new Client(id);
+    private final Client client = new Client(id);
 
     private LoginView loginView;
     private LoginController loginController;

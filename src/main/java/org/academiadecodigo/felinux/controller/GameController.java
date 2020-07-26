@@ -18,7 +18,7 @@ public class GameController implements Controller {
     private Server server;
     private String question;
     private GameService gameService;
-    private HashMap<Integer, Bootstrap> bootstrapMap = new HashMap<>();
+    private final HashMap<Integer, Bootstrap> bootstrapMap = new HashMap<>();
 
     private int numPlayersReady = 0;
 

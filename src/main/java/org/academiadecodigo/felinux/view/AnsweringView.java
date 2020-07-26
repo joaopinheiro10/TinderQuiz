@@ -13,8 +13,8 @@ public class AnsweringView extends AbstractView{
 
     @Override
     public void show() {
-
         StringInputScanner scanner = new StringInputScanner();
+
         printStream.println(Colors.GREEN + answeringController.getGameController().getCurrentPlayerName() + Messages.QUESTION);
         scanner.setMessage(answeringController.getGameController().getQuestion());
         printStream.println(Messages.CURRENT_ROUND + answeringController.getGameController().getRoundNumber());

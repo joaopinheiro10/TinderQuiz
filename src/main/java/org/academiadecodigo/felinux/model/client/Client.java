@@ -4,7 +4,7 @@ public class Client {
     private String name;
     private String phoneNumber;
     private int numberOfCorrectAnswers;
-    private int id;
+    private final int id;
 
     public Client (int id) {
         this.id = id;
@@ -24,7 +24,6 @@ public class Client {
 
     public void setName(String userInput) {
         name = userInput;
-        System.out.println(name);
     }
 
     public void setPhoneNumber(String phoneNumber) {

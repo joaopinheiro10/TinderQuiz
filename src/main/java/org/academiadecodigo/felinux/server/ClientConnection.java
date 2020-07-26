@@ -12,7 +12,8 @@ public class ClientConnection implements Runnable {
 
     private final Socket socket;
     private GameController gameController;
-    private int id;
+
+    private final int id;
 
 
     /**
