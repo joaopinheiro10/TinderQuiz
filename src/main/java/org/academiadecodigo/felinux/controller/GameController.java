@@ -60,7 +60,6 @@ public class GameController implements Controller {
     }
 
     public void whoAnswer() {
-        System.out.println(bootstrapMap.size());
         for (int key : bootstrapMap.keySet()) {
             if (key != gameService.getCurrentIdPlayer()) {
                 bootstrapMap.get(key).getWaitingController().execute();
@@ -83,7 +82,11 @@ public class GameController implements Controller {
 
         for (LinkedList<Client> linkedList : allMatch) {
 
-            if (linkedList.size()<=1) {
+            if(linkedList.size() < 1) {
+                continue;
+            }
+
+            if (linkedList.size() ==1) {
                 bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch("You have no matches! Loser.");
                 continue;
             }
@@ -111,9 +114,7 @@ public class GameController implements Controller {
     }
 
     public boolean checkAnswer(String answer){
-        System.out.println(lastAnswer);
         lastAnswer = gameService.checkAnswer(answer);
-        System.out.println(lastAnswer);
         return lastAnswer;
     }
 
@@ -132,6 +133,21 @@ public class GameController implements Controller {
             execute();
         }
     }
+
+    public void removePlayer (int id) {
+
+        removePlayerFromBootstrap(id);
+        gameService.removePlayer(id);
+
+    }
+
+
+    private void removePlayerFromBootstrap(int playerID) {
+
+        this.bootstrapMap.remove(playerID);
+
+    }
+
 }
 
 
