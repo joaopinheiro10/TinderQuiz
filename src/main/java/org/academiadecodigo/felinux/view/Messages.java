@@ -35,7 +35,7 @@ public class Messages {
 
     public static final String CURRENT_QUESTION = Colors.BLUE + "Current question is: " + Colors.NOCOLOR;
     public static final String CURRENT_ROUND = "\n" + Colors.BLUE + "CURRENT ROUND: " + Colors.NOCOLOR;
-    public static final String ANSWER_WAS = "Answer was: ";
+    public static final String ANSWER_WAS = Colors.BLUE + " answered this: " + Colors.NOCOLOR;
 
     /**
      * Game messages
