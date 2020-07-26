@@ -5,6 +5,7 @@ import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.service.GameService;
 import static org.academiadecodigo.felinux.service.GameService.ROUND_NUMBERS;
+import org.academiadecodigo.felinux.view.Colors;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -70,7 +71,7 @@ public class GameController implements Controller {
      */
     private void broadcast() {
        for(int key : bootstrapMap.keySet()) {
-           bootstrapMap.get(key).getBroadcastView().show(gameService.getCurrentPlayer().getName(), lastAnswer);
+           bootstrapMap.get(key).getBroadcastView().show(Colors.BLUE + gameService.getCurrentPlayer().getName() + Colors.NOCOLOR, lastAnswer);
        }
        gameService.upDateCurrentPlayer();
     }
