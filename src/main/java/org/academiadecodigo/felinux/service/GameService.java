@@ -1,9 +1,10 @@
 package org.academiadecodigo.felinux.service;
 
-import org.academiadecodigo.felinux.controller.GameController;
 import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.view.Quiz;
+
+import java.util.LinkedList;
 
 public class GameService {
 
@@ -50,8 +51,35 @@ public class GameService {
     }
 */
 
-    public String match() {
-        return null;
+    public LinkedList<Client> match() {
+
+        LinkedList<Client> dumb = new LinkedList<>();
+        LinkedList<Client> average = new LinkedList<>();
+        LinkedList<Client> smart = new LinkedList<>();
+        LinkedList<Client> genious = new LinkedList<>();
+
+        for (Client client : server.getClientMap().values()) {
+
+            if (client.getNumberOfCorrectAnswers() <= 3 ) {
+                dumb.add(client);
+            }
+
+            if (client.getNumberOfCorrectAnswers() <= 6 ) {
+                average.add(client);
+            }
+
+            if (client.getNumberOfCorrectAnswers() <= 9 ) {
+                smart.add(client);
+            }
+
+            if (client.getNumberOfCorrectAnswers() == 10 ) {
+                genious.add(client);
+            }
+
+        }
+
+        return dumb;
+
     }
 
     public int getCurrentIdPlayer() {

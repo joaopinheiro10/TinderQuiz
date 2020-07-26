@@ -1,10 +1,13 @@
 package org.academiadecodigo.felinux.controller;
 
 import org.academiadecodigo.felinux.Bootstrap;
+import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.service.GameService;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Set;
 
 public class GameController implements Controller {
 
@@ -13,7 +16,8 @@ public class GameController implements Controller {
     private GameService gameService;
     private HashMap<Integer, Bootstrap> bootstrapMap = new HashMap<>();
     private boolean lastAnswer;
-
+    private final int ROUND_NUMBER = 1;
+    private int currentRoundNumber=0;
 
     public void changeName(int id, String name) {
         server.getClient(id).setName(name);
@@ -30,12 +34,17 @@ public class GameController implements Controller {
 
     @Override
     public void execute() {
-        question = gameService.generateQuestion();
-        System.out.println(question);
-        whoAnswer();
-        broadcast();
-        System.out.println("before loop");
-        execute();
+
+        while (currentRoundNumber<ROUND_NUMBER) {
+
+            question = gameService.generateQuestion();
+            whoAnswer();
+            broadcast();
+            currentRoundNumber++;
+        }
+
+        broadcastMatch(gameService.match());
+
     }
 
     public String getQuestion() {
@@ -66,6 +75,19 @@ public class GameController implements Controller {
            bootstrapMap.get(key).getBroadcastView().show(gameService.getCurrentPlayer().getName(), lastAnswer);
        }
        gameService.upDateCurrentPlayer();
+    }
+
+    private void broadcastMatch ( LinkedList<Client> clients ) {
+        String message = "YOU HAVE A MATCH WITH THE FOLLOWING PLAYERS: \n\n";
+
+        for (Client client : clients) {
+          message  +=  client.getName() + "-" + client.getPhoneNumber() + "\n";
+        }
+
+        for (int key : bootstrapMap.keySet()) {
+            bootstrapMap.get(key).getBroadcastView().showMatch(message);
+        }
+
     }
 
     public boolean checkAnswer(String answer){

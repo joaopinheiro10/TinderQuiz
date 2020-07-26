@@ -22,4 +22,8 @@ public class BroadcastView extends AbstractView{
             printStream.println(name + " " + Messages.WRONG);
         }
     }
+
+    public void showMatch ( String message ) {
+        printStream.println(message);
+    }
 }
