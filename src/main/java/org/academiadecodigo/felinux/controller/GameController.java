@@ -144,7 +144,7 @@ public class GameController implements Controller {
     public void addPlayerReady () {
         numPlayersReady++;
 
-        if (numPlayersReady == 2) {
+        if (numPlayersReady == 4) {
 
             execute();
         }
