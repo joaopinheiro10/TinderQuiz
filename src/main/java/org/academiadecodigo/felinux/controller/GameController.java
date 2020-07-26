@@ -48,6 +48,7 @@ public class GameController implements Controller {
             broadcast();
         }
 
+        endGame();
         broadcastMatch(gameService.match());
 
     }
@@ -79,6 +80,12 @@ public class GameController implements Controller {
         gameService.upDateCurrentPlayer();
     }
 
+    public void endGame() {
+        for(int key : bootstrapMap.keySet()) {
+            bootstrapMap.get(key).getBroadcastView().showMatch(Messages.MATCH);
+        }
+    }
+
     private void broadcastMatch ( LinkedList<LinkedList<Client>> allMatch ) {
         for (LinkedList<Client> linkedList : allMatch) {
             if(linkedList.size() == 0) {
@@ -98,17 +105,20 @@ public class GameController implements Controller {
                     continue;
                 }
             }
+
             HashMap<Integer, Bootstrap> test = new HashMap<>();
+
             for(Client client : linkedList) {
                 test.put(client.getId(), bootstrapMap.get(client.getId()));
             }
+
             for (Client client : linkedList) {
-                String message = Messages.MATCH;
                 for (Bootstrap bootstrap : test.values()) {
                     if ( client.getId() == bootstrap.getID() ) {
                         continue;
                     }
-                    message += client.getName() + "-" + client.getPhoneNumber() + "\n";
+
+                    String message = client.getName() + "- " + client.getPhoneNumber() + "\n";
                     bootstrap.getBroadcastView().showMatch(message);
                 }
             }
