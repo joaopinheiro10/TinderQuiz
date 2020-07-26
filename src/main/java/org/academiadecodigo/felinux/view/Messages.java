@@ -1,6 +1,5 @@
 package org.academiadecodigo.felinux.view;
 
-import java.security.PublicKey;
 
 public class Messages {
     /**
@@ -27,11 +26,10 @@ public class Messages {
 
 
     public static final String GAMERULES = "These are the game rules:\n\n" +"1- Minimum 2, Maximum 4 players;\n" +
-            "2- Roun\n" +
-            "3- Question: Right, don't \"drink\" and move on to the next. Fail, drink, move on to the next\n" +
-            "4- Bonus round at the end of each round\n" +
-            "5- The game ends after x rounds (one being selected at the beginning - with minimum and maximum)\n" +
-            "6- After the end, verification or correspondence (scoring interval) between the players\n" +
-            "7- Chat idea - style bar (optional)";
+            "2- Each player gets a question and the others wait for him(her) to answer\n" +
+            "3- If you get the correct answer, you don't drink and move on to the next. If you fail, drink, move on to the next\n" +
+            "4- The game ends after 5 rounds \n" +
+            "5- After the end, the game verifies if you matched with someone\n" +
+            "6- Quite simple, isn't it?\n\n" + "Good Luck!";
 }
 
