@@ -55,7 +55,7 @@ public class GameService {
                 continue;
             }
 
-            if (client.getNumberOfCorrectAnswers() >= 4) {
+            if (client.getNumberOfCorrectAnswers() == 4) {
                 smart.add(client);
                 continue;
             }
@@ -65,7 +65,7 @@ public class GameService {
                 continue;
             }
 
-            if (client.getNumberOfCorrectAnswers() < 1 ) {
+            if (client.getNumberOfCorrectAnswers() <= 1 ) {
                 dumb.add(client);
             }
 
