@@ -26,12 +26,16 @@ public class Messages {
     public static final String[] OPTIONS = {"Go Back."};
 
     public static final String QUESTION = Colors.BLUE + " is your turn: " + Colors.NOCOLOR;
-    public static final String RIGHT = Colors.GREEN + " got the right answer." + Colors.NOCOLOR;
-    public static final String WRONG = Colors.RED + " failed the answer, need Google that next time" + Colors.NOCOLOR;
+    public static final String RIGHT = Colors.GREEN  + " got the right answer." + Colors.NOCOLOR;
+    public static final String WRONG = Colors.RED + " failed the answer, Google it next time. But now DRINK!" + Colors.NOCOLOR;
     public static final String USERNAME = Colors.BLUE + "Insert your name: " + Colors.NOCOLOR;
-    public static final String PHONE_NUMBER = Colors.BLUE + "What's your phone number: " + Colors.NOCOLOR;
-    public static final String CURRENT_QUESTION = Colors.BLUE + "Current question is: " + Colors.NOCOLOR;
+    public static final String PHONE_NUMBER =Colors.BLUE + "What's your phone number: " + Colors.NOCOLOR;
+    public static final String PHONE_NUMBER_WRONG =Colors.RED + "Please insert a valid phone number (p.ex: 9********)" + Colors.NOCOLOR;
 
+
+    public static final String CURRENT_QUESTION = Colors.BLUE + "Current question is: " + Colors.NOCOLOR;
+    public static final String CURRENT_ROUND = "\n" + Colors.BLUE + "CURRENT ROUND: " + Colors.NOCOLOR;
+    public static final String ANSWER_WAS = "Answer was: ";
 
     /**
      * Game messages
@@ -56,4 +60,6 @@ public class Messages {
 
     public static final String NO_MATCH = Colors.RED + "You have no matches! Loser." + Colors.NOCOLOR;
     public static final String MATCH = Colors.GREEN + "YOU HAVE A MATCH WITH THE FOLLOWING PLAYERS: \n\n" + Colors.NOCOLOR;
+    public static final String AVERAGE = Colors.BLUE + "You're an average person and still got no matches, how's that like?" + Colors.NOCOLOR;
+    public static final String GENIUS = Colors.CYAN + "You're so smart that you have no matches. Dumb it down, please" + Colors.NOCOLOR;
 }
