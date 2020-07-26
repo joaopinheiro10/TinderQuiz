@@ -139,13 +139,15 @@ public class GameController implements Controller {
 
     }
 
-
     private void removePlayerFromBootstrap(int playerID) {
 
         this.bootstrapMap.remove(playerID);
 
     }
 
+    public int getRoundNumber() {
+        return gameService.getCurrentRoundNumber();
+    }
 }
 
 
