@@ -93,7 +93,7 @@ public class GameController implements Controller {
             for (Client client : linkedList) {
 
                 String message = Messages.MATCH;
-                for (Bootstrap bootstrap : bootstrapMap.values()) {
+                for (Bootstrap bootstrap : bootstrapMap.values()){
 
                     if ( client.getId() == bootstrap.getID() ) {
                         continue;
@@ -127,7 +127,7 @@ public class GameController implements Controller {
 
     public void addPlayerReady() {
         numPlayersReady++;
-        if (numPlayersReady == 4) {
+        if (numPlayersReady == 2) {
             execute();
         }
     }
@@ -147,6 +147,9 @@ public class GameController implements Controller {
 
     public int getRoundNumber() {
         return gameService.getCurrentRoundNumber();
+    }
+
+    public void resetStream(){
     }
 }
 

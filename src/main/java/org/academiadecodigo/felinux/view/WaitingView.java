@@ -2,7 +2,7 @@ package org.academiadecodigo.felinux.view;
 
 import org.academiadecodigo.felinux.controller.WaitingController;
 
-public class WaitingView extends AbstractView{
+public class WaitingView extends AbstractView {
 
     WaitingController waitingController;
 
@@ -13,9 +13,9 @@ public class WaitingView extends AbstractView{
     @Override
     public void show() {
 
-
-        printStream.println(Colors.BLUE + waitingController.getGameController().getCurrentPlayerName() + Colors.NOCOLOR + Messages.WAITING);
         printStream.println(Messages.CURRENT_QUESTION + waitingController.getGameController().getQuestion());
+        printStream.println(Colors.YELLOW + waitingController.getGameController().getCurrentPlayerName() + Colors.NOCOLOR + Messages.WAITING);
+
 
     }
 }

@@ -25,11 +25,11 @@ public class Messages {
 
     public static final String[] OPTIONS = {"Go Back."};
 
-    public static final String QUESTION = Colors.BLUE  + "Question: " + Colors.NOCOLOR;
-    public static final String RIGHT = Colors.GREEN  + " got the right answer." + Colors.NOCOLOR;
+    public static final String QUESTION = Colors.BLUE + " is your turn: " + Colors.NOCOLOR;
+    public static final String RIGHT = Colors.GREEN + " got the right answer." + Colors.NOCOLOR;
     public static final String WRONG = Colors.RED + " failed the answer, need Google that next time" + Colors.NOCOLOR;
     public static final String USERNAME = Colors.BLUE + "Insert your name: " + Colors.NOCOLOR;
-    public static final String PHONE_NUMBER =Colors.BLUE + "What's your phone number: " + Colors.NOCOLOR;
+    public static final String PHONE_NUMBER = Colors.BLUE + "What's your phone number: " + Colors.NOCOLOR;
     public static final String CURRENT_QUESTION = Colors.BLUE + "Current question is: " + Colors.NOCOLOR;
 
 
@@ -40,16 +40,16 @@ public class Messages {
     public static final String INSTRUCTIONS = "Instructions";
     public static final String EXIT = "Quit";
 
-    public static final String WAITING = Colors.YELLOW +  " turn now, please wait..." + Colors.NOCOLOR;
+    public static final String WAITING = Colors.YELLOW + " turn now, please wait..." + Colors.NOCOLOR;
 
 
-    public static final String GAMERULES = Colors.BLUE +  RectangleBoxText.printText("These are the game rules:\n" +
-            "\n1- 4 Players\n" +
-            "2- Each round every player receives a question\n" +
-            "3- If you answer it right, don't drink and move on to the next \n" +
-            "4- If you fail, drink, move on to the next\n" +
-            "5- The game ends after 10 rounds\n" +
-            "6- After the end, game checks if you matched with someone\n"
+    public static final String GAMERULES = Colors.BLUE + RectangleBoxText.printText("These are the game rules:\n" +
+                    "\n1- 4 Players\n" +
+                    "2- Each round every player receives a question\n" +
+                    "3- If you answer it right, don't drink and move on to the next \n" +
+                    "4- If you fail, drink, move on to the next\n" +
+                    "5- The game ends after 10 rounds\n" +
+                    "6- After the end, game checks if you matched with someone\n"
             , 100, 15) + Colors.NOCOLOR;
 
     public static final String WAITINGCONNECTIONS = Colors.BLUE + "Waiting to save someone's life." + Colors.NOCOLOR;
