@@ -103,6 +103,7 @@ public class Bootstrap {
         waitForPlayersView = new WaitForPlayersView();
         waitForPlayersController.setView(waitForPlayersView);
         waitForPlayersView.setPrintStream(printStream);
+        waitForPlayersController.setGameController(gameController);
     }
 
     private void wireAnswer() {

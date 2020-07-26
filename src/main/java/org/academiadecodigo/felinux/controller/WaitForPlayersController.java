@@ -5,6 +5,6 @@ public class WaitForPlayersController extends AbstractController {
     @Override
     public void execute () {
         view.show();
-
+        gameController.addPlayerReady();
     }
 }
