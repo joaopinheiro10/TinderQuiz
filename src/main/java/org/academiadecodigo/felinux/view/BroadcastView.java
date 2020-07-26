@@ -17,9 +17,9 @@ public class BroadcastView extends AbstractView{
 
     public void show(String name, boolean lastAnswer) {
         if (lastAnswer) {
-            printStream.println(name + " " + Messages.RIGHT);
+            printStream.println(name + Messages.RIGHT);
         } else {
-            printStream.println(name + " " + Messages.WRONG);
+            printStream.println(name + Messages.WRONG);
         }
         try {
             Thread.sleep(1500);
@@ -29,6 +29,10 @@ public class BroadcastView extends AbstractView{
     }
 
     public void showMatch (String message ) {
-        printStream.println(Colors.BLUE + gameController.getCurrentPlayerName() + Colors.NOCOLOR + Messages.ANSWER_WAS + message);
+        printStream.println(message);
+    }
+
+    public void answerLine(String message) {
+        printStream.println(Colors.BLUE + gameController.getCurrentPlayerName() + Colors.NOCOLOR + Messages.ANSWER_WAS);
     }
 }

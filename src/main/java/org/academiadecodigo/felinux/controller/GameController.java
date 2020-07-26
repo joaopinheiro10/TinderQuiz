@@ -126,7 +126,7 @@ public class GameController implements Controller {
         for (int key : bootstrapMap.keySet()) {
 
             if (key != gameService.getCurrentIdPlayer()) {
-                bootstrapMap.get(key).getBroadcastView().showMatch(answer);
+                bootstrapMap.get(key).getBroadcastView().answerLine(answer);
             }
 
         }
