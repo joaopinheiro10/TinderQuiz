@@ -34,12 +34,13 @@ public class Bootstrap {
     private WaitingController waitingController;
     private WaitingView waitingView;
 
-
     private WaitForPlayersController waitForPlayersController;
     private WaitForPlayersView waitForPlayersView;
 
     private BroadcastView broadcastView;
 
+    private ExitController exitController;
+    private ExitView exitView;
 
     public Bootstrap(int id, InputStream inputStream, PrintStream printStream, GameController gameController) {
         this.id = id;
@@ -56,14 +57,12 @@ public class Bootstrap {
         wireWaiting();
         wireAnswer();
         wireBroadcast();
+        wireExit();
 
         gameController.addBootstrap(id,this);
 
         loginController.execute();
     }
-
-
-
 
     private void wireLogin() {
 
@@ -137,6 +136,19 @@ public class Bootstrap {
         broadcastView.setGameController(gameController);
         broadcastView.setPrompt(prompt);
         broadcastView.setPrintStream(printStream);
+    }
+
+    private void wireExit() {
+
+        exitController = new ExitController();
+        exitView = new ExitView();
+        exitController.setView(exitView);
+        exitView.setExitController(exitController);
+        exitView.setPrintStream(printStream);
+        exitController.setGameController(gameController);
+        menuController.setExitController(exitController);
+        exitController.setId(id);
+
     }
 
     private void setupMenuMap() {

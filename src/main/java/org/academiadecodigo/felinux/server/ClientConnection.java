@@ -46,8 +46,10 @@ public class ClientConnection implements Runnable {
 
         Bootstrap bootstrap = new Bootstrap(id, inputStream, printStream, gameController);
 
-        System.out.println(id);
-        System.out.println(bootstrap);
+        System.out.println("Vim fechar a socket");
+        closeSocket();
+
+
 
 
         /*
@@ -99,6 +101,17 @@ public class ClientConnection implements Runnable {
             System.err.println("Error: " + ioe.getMessage());
         }
     }
+
+    public void closeSocket() {
+
+        try {
+            this.socket.close();
+        } catch (IOException exception) {
+            exception.getStackTrace();
+        }
+
+    }
+
 
     /**
      * Returns ouput stream of this connection

@@ -105,4 +105,10 @@ public class GameService {
         currentIdPlayer++;
     }
 
+    public void removePlayer (int playerToRemove) {
+
+        this.server.getClientMap().remove(playerToRemove);
+        System.out.println("removi o player do client map, player nº " + playerToRemove);
+
+    }
 }
