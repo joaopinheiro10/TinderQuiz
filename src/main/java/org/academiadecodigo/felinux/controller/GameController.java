@@ -15,9 +15,13 @@ public class GameController implements Controller {
     private String question;
     private GameService gameService;
     private HashMap<Integer, Bootstrap> bootstrapMap = new HashMap<>();
+
+    private int numPlayersReady = 0;
+
     private boolean lastAnswer;
     private final int ROUND_NUMBER = 1;
     private int currentRoundNumber=0;
+
 
     public void changeName(int id, String name) {
         server.getClient(id).setName(name);
@@ -100,6 +104,12 @@ public class GameController implements Controller {
     }
 
 
+    public void addPlayerReady() {
+        numPlayersReady++;
+        if (numPlayersReady == 2) { // REPLACE 2 WITH NUMBER OF PLAYERS
+            execute();
+        }
+    }
 }
 
 
