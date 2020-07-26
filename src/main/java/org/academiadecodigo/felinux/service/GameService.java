@@ -51,12 +51,14 @@ public class GameService {
     }
 */
 
-    public LinkedList<Client> match() {
+    public LinkedList<LinkedList<Client>> match() {
 
         LinkedList<Client> dumb = new LinkedList<>();
         LinkedList<Client> average = new LinkedList<>();
         LinkedList<Client> smart = new LinkedList<>();
         LinkedList<Client> genious = new LinkedList<>();
+
+        LinkedList<LinkedList<Client>> allMatchesList = new LinkedList<>();
 
         for (Client client : server.getClientMap().values()) {
 
@@ -78,7 +80,12 @@ public class GameService {
 
         }
 
-        return dumb;
+        allMatchesList.add(dumb);
+        allMatchesList.add(average);
+        allMatchesList.add(smart);
+        allMatchesList.add(genious);
+
+        return allMatchesList;
 
     }
 

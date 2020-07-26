@@ -12,13 +12,12 @@ import java.util.Map;
 
 public class Bootstrap {
 
-    private Client client = new Client();
     private GameController gameController;
     private InputStream inputStream;
     private PrintStream printStream;
     private Prompt prompt;
     private int id;
-
+    private Client client = new Client(id);
 
     private LoginView loginView;
     private LoginController loginController;
@@ -158,5 +157,9 @@ public class Bootstrap {
 
     public BroadcastView getBroadcastView() {
         return broadcastView;
+    }
+
+    public int getID () {
+        return this.id;
     }
 }

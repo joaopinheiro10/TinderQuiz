@@ -4,6 +4,7 @@ import org.academiadecodigo.felinux.Bootstrap;
 import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.service.GameService;
+import sun.awt.image.ImageWatched;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -19,7 +20,7 @@ public class GameController implements Controller {
     private int numPlayersReady = 0;
 
     private boolean lastAnswer;
-    private final int ROUND_NUMBER = 1;
+    private final int ROUND_NUMBER = 10;
     private int currentRoundNumber=0;
 
 
@@ -81,16 +82,29 @@ public class GameController implements Controller {
        gameService.upDateCurrentPlayer();
     }
 
-    private void broadcastMatch ( LinkedList<Client> clients ) {
-        String message = "YOU HAVE A MATCH WITH THE FOLLOWING PLAYERS: \n\n";
+    private void broadcastMatch ( LinkedList<LinkedList<Client>> allMatch ) {
 
-        for (Client client : clients) {
-          message  +=  client.getName() + "-" + client.getPhoneNumber() + "\n";
+        for (LinkedList<Client> linkedList : allMatch) {
+
+            for (Client client : linkedList) {
+
+                String message = "YOU HAVE A MATCH WITH THE FOLLOWING PLAYERS: \n\n";
+                for (Bootstrap bootstrap : bootstrapMap.values()) {
+
+                    if ( client.getId() == bootstrap.getID() ) {
+                        continue;
+                    }
+
+                    message += client.getName() + "-" + client.getPhoneNumber() + "\n";
+                    bootstrap.getBroadcastView().showMatch(message);
+
+                }
+
+
+            }
+
         }
 
-        for (int key : bootstrapMap.keySet()) {
-            bootstrapMap.get(key).getBroadcastView().showMatch(message);
-        }
 
     }
 
