@@ -61,9 +61,7 @@ public class GameController implements Controller {
     public void whoAnswer() {
         System.out.println(bootstrapMap.size());
         for (int key : bootstrapMap.keySet()) {
-            System.out.println("Key: " + key + "|" + "current player: " + gameService.getCurrentIdPlayer());
             if (key != gameService.getCurrentIdPlayer()) {
-                System.out.println("estou dentro do if");
                 bootstrapMap.get(key).getWaitingController().execute();
             }
         }

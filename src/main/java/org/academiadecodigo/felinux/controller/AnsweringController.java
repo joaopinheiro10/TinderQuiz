@@ -6,12 +6,10 @@ public class AnsweringController extends AbstractController {
 
     @Override
     public void execute() {
-        System.out.println("cheguei à answering controller");
         view.show();
     }
 
     public void validateAnswer(String answer) {
-        System.out.println(answer);
         isAnswer = gameController.checkAnswer(answer);
         gameController.upDateResult(isAnswer);
     }

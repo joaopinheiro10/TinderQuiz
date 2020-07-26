@@ -13,7 +13,6 @@ public class AnsweringView extends AbstractView{
 
     @Override
     public void show() {
-        System.out.println("View Answer");
         StringInputScanner scanner = new StringInputScanner();
         scanner.setMessage(Colors.WHITE + answeringController.getGameController().getQuestion() + Colors.NOCOLOR);
         scanner.setError("");

@@ -19,6 +19,7 @@ public class Messages {
     public static final String WRONG = "Google that next time";
     public static final String USERNAME = "Username: ";
     public static final String PHONE_NUMBER = "What's your phone number: ";
+    public static final String CURRENT_QUESTION = "This is the current question: ";
 
 
     /**
