@@ -4,6 +4,7 @@ import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.view.Quiz;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class GameService {
@@ -12,13 +13,24 @@ public class GameService {
     private String currentQuestion;
     private int questionNumber;
     private int currentIdPlayer = 0;
+    private HashSet<Integer> questionList = new HashSet<>();
 
     public GameService(Server server) {
         this.server = server;
     }
 
     public String generateQuestion() {
+
         questionNumber = (int) (Math.floor(Math.random() * Quiz.values().length));
+
+        for (Integer questionNr : questionList) {
+            if(questionNr == questionNumber) {
+                System.out.println("entrei aqui");
+                generateQuestion();
+            }
+        }
+
+        questionList.add(questionNumber);
         currentQuestion = Quiz.values()[questionNumber].getQuestion();
         return currentQuestion;
     }
@@ -41,14 +53,17 @@ public class GameService {
 
             if (client.getNumberOfCorrectAnswers() == 10 ) {
                 genious.add(client);
+                continue;
             }
 
             if (client.getNumberOfCorrectAnswers() >= 6 ) {
                 smart.add(client);
+                continue;
             }
 
             if (client.getNumberOfCorrectAnswers() >= 3 ) {
                 average.add(client);
+                continue;
             }
 
             if (client.getNumberOfCorrectAnswers() < 3 ) {
