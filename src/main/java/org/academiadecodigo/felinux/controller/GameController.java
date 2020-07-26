@@ -39,7 +39,7 @@ public class GameController implements Controller {
     @Override
     public void execute() {
 
-        while (gameService.getCurrentRoundNumber() < ROUND_NUMBERS) {
+        while (gameService.getCurrentRoundNumber() <= ROUND_NUMBERS) {
 
             question = gameService.generateQuestion();
             whoAnswer();
@@ -81,19 +81,39 @@ public class GameController implements Controller {
 
         for (LinkedList<Client> linkedList : allMatch) {
 
-            if(linkedList.size() < 1) {
+            if(linkedList.size() == 0) {
                 continue;
             }
 
-            if (linkedList.size() ==1) {
-                bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch(Messages.NO_MATCH);
-                continue;
+            if (linkedList.size() == 1) {
+                if(linkedList == allMatch.get(0)) {
+                    bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch(Messages.NO_MATCH);
+                    continue;
+                }
+
+                if(linkedList == allMatch.get(1) || linkedList == allMatch.get(2)) {
+                    bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch(Messages.AVERAGE);
+                    continue;
+                }
+
+                if(linkedList == allMatch.get(3)) {
+                    bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch(Messages.GENIUS);
+                    continue;
+                }
+            }
+
+            HashMap<Integer, Bootstrap> test = new HashMap<>();
+
+            for(Client client : linkedList) {
+
+                test.put(client.getId(), bootstrapMap.get(client.getId()));
             }
 
             for (Client client : linkedList) {
 
                 String message = Messages.MATCH;
-                for (Bootstrap bootstrap : bootstrapMap.values()) {
+
+                for (Bootstrap bootstrap : test.values()) {
 
                     if ( client.getId() == bootstrap.getID() ) {
                         continue;
@@ -127,7 +147,7 @@ public class GameController implements Controller {
 
     public void addPlayerReady() {
         numPlayersReady++;
-        if (numPlayersReady == 4) {
+        if (numPlayersReady == 3) {
             execute();
         }
     }
