@@ -6,6 +6,7 @@ import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.service.GameService;
 import static org.academiadecodigo.felinux.service.GameService.ROUND_NUMBERS;
 import org.academiadecodigo.felinux.view.Colors;
+import org.academiadecodigo.felinux.view.Messages;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -85,13 +86,13 @@ public class GameController implements Controller {
             }
 
             if (linkedList.size() ==1) {
-                bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch("You have no matches! Loser.");
+                bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch(Messages.NO_MATCH);
                 continue;
             }
 
             for (Client client : linkedList) {
 
-                String message = "YOU HAVE A MATCH WITH THE FOLLOWING PLAYERS: \n\n";
+                String message = Messages.MATCH;
                 for (Bootstrap bootstrap : bootstrapMap.values()) {
 
                     if ( client.getId() == bootstrap.getID() ) {
@@ -124,10 +125,9 @@ public class GameController implements Controller {
        return gameService.getCurrentPlayer().getName();
     }
 
-
     public void addPlayerReady() {
         numPlayersReady++;
-        if (numPlayersReady == 2) { // REPLACE 2 WITH NUMBER OF PLAYERS
+        if (numPlayersReady == 4) {
             execute();
         }
     }

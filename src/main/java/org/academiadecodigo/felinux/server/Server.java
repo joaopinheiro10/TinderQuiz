@@ -2,7 +2,6 @@ package org.academiadecodigo.felinux.server;
 
 
 import org.academiadecodigo.felinux.controller.GameController;
-import org.academiadecodigo.felinux.controller.LoginController;
 import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.view.Messages;
 
@@ -24,7 +23,6 @@ public class Server {
     private ServerSocket serverSocket;
 
     GameController gameController;
-    private Scanner scanner = new Scanner(System.in);
 
     public Server(int portNumber) throws IOException {
 
@@ -42,7 +40,7 @@ public class Server {
 
                 System.out.println(Messages.WAITINGCONNECTIONS);
                 Socket clientSocket = this.serverSocket.accept();
-                System.out.println("Connected to IP: " + clientSocket.getInetAddress() + " at Port: " + clientSocket.getPort());
+                System.out.println(Messages.CONNECTED + clientSocket.getInetAddress() + Messages.PORT + clientSocket.getPort());
                 ClientConnection clientConnection = new ClientConnection(clientSocket, counter);
                 clientConnection.setGameController(gameController);
                 threadPool.submit(clientConnection);

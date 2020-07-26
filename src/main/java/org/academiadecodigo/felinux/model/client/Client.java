@@ -32,7 +32,6 @@ public class Client {
     }
 
     public void updateScore(boolean isAnswer) {
-        System.out.println("update");
         if (!isAnswer) {
             return;
         }

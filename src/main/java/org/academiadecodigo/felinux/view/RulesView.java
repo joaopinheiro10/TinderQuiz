@@ -27,8 +27,7 @@ public class RulesView extends AbstractView{
 
     public void backToMenu() {
 
-        String[] options = {"Go Back"};
-        MenuInputScanner menu = new MenuInputScanner(options);
+        MenuInputScanner menu = new MenuInputScanner(Messages.OPTIONS);
         menu.setMessage(Colors.BLUE + Messages.MENU_VIEW + Colors.NOCOLOR);
         menu.setError(Messages.MENU_VIEW_ERROR);
 

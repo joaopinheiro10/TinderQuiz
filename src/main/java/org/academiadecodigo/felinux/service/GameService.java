@@ -26,7 +26,6 @@ public class GameService {
         questionNumber = (int) (Math.floor(Math.random() * Quiz.values().length));
 
         if (questionList.contains(questionNumber)) {
-                System.out.println("entrei aqui");
                 generateQuestion();
         }
 
@@ -101,7 +100,6 @@ public class GameService {
     public void removePlayer (int playerToRemove) {
 
         this.server.getClientMap().remove(playerToRemove);
-        System.out.println("removi o player do client map, player nº " + playerToRemove);
 
     }
 

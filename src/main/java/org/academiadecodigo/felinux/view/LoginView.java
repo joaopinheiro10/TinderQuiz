@@ -18,13 +18,11 @@ public class LoginView extends AbstractView {
     public void show() {
 
         StringInputScanner scanner = new StringInputScanner();
-        scanner.setError("");
 
         printStream.println(Messages.WELCOME);
 
         scanner.setMessage(Messages.USERNAME);
 
-        scanner.setError("");
         loginController.setName(prompt.getUserInput(scanner));
 
         checkNumber();

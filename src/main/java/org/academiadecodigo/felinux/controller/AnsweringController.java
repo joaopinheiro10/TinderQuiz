@@ -13,8 +13,4 @@ public class AnsweringController extends AbstractController {
         isAnswer = gameController.checkAnswer(answer);
         gameController.upDateResult(isAnswer);
     }
-
-    public boolean isAnswer() {
-        return isAnswer;
-    }
 }

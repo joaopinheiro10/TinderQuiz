@@ -2,10 +2,7 @@ package org.academiadecodigo.felinux.server;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.felinux.Bootstrap;
-import org.academiadecodigo.felinux.controller.Controller;
 import org.academiadecodigo.felinux.controller.GameController;
-import org.academiadecodigo.felinux.controller.LoginController;
-import org.academiadecodigo.felinux.model.client.Client;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,14 +44,6 @@ public class ClientConnection implements Runnable {
         Bootstrap bootstrap = new Bootstrap(id, inputStream, printStream, gameController);
 
 
-    }
-
-    /**
-     * Creates a new prompt
-     * @return a new Prompt
-     */
-    private Prompt createPrompt() {
-        return new Prompt(inputStream, printStream);
     }
 
     private void createStreams() {

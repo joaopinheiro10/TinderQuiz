@@ -14,11 +14,16 @@ public class Messages {
             PseudoTex.printText("Welcome To Tinder Quiz", 10)
             + Colors.NOCOLOR;
 
+    public static final String CONNECTED = "Connected to IP: ";
+    public static final String PORT = " at Port: ";
+
     public static final String MENU_VIEW = Colors.BLUE + "Please choose an option:" + Colors.NOCOLOR;
     public static final String MENU_VIEW_ERROR = Colors.YELLOW + "Invalid option." + Colors.NOCOLOR;
 
     public static final String WAITING_FOR_PLAYERS = Colors.YELLOW + "The game will start when all players are ready.\n" +
             "Please wait." + Colors.NOCOLOR;
+
+    public static final String[] OPTIONS = {"Go Back."};
 
     public static final String QUESTION = Colors.BLUE  + "Question: " + Colors.NOCOLOR;
     public static final String RIGHT = Colors.GREEN  + " got the right answer." + Colors.NOCOLOR;
@@ -39,14 +44,16 @@ public class Messages {
 
 
     public static final String GAMERULES = Colors.BLUE +  RectangleBoxText.printText("These are the game rules:\n" +
-            "\n1-Minimum 2, Maximum 4 players;\n" +
-            "2-Player credentials: username, contact (optional)\n" +
-            "3-Question: Right, don't \"drink\" and move on to the next. \n" +
-            "Fail, drink, move on to the next; (Everyone sees a question and an answer)\n" +
-            "4-Bonus round at the end of each round\n" +
-            "5-The game ends after x rounds (one being selected at the beginning - with minimum and maximum)\n" +
-            "6-After the end, verification or correspondence (scoring interval) between the players\n" +
-            "7-Chat idea - style bar (optional)", 100, 15) + Colors.NOCOLOR;
+            "\n1- 4 Players\n" +
+            "2- Each round every player receives a question\n" +
+            "3- If you answer it right, don't drink and move on to the next \n" +
+            "4- If you fail, drink, move on to the next\n" +
+            "5- The game ends after 10 rounds\n" +
+            "6- After the end, game checks if you matched with someone\n"
+            , 100, 15) + Colors.NOCOLOR;
 
     public static final String WAITINGCONNECTIONS = Colors.BLUE + "Waiting to save someone's life." + Colors.NOCOLOR;
+
+    public static final String NO_MATCH = Colors.RED + "You have no matches! Loser." + Colors.NOCOLOR;
+    public static final String MATCH = Colors.GREEN + "YOU HAVE A MATCH WITH THE FOLLOWING PLAYERS: \n\n" + Colors.NOCOLOR;
 }
