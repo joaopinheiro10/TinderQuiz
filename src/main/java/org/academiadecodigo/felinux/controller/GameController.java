@@ -59,7 +59,6 @@ public class GameController implements Controller {
     }
 
     public void whoAnswer() {
-        System.out.println(bootstrapMap.size());
         for (int key : bootstrapMap.keySet()) {
             if (key != gameService.getCurrentIdPlayer()) {
                 bootstrapMap.get(key).getWaitingController().execute();
@@ -110,9 +109,7 @@ public class GameController implements Controller {
     }
 
     public boolean checkAnswer(String answer){
-        System.out.println(lastAnswer);
         lastAnswer = gameService.checkAnswer(answer);
-        System.out.println(lastAnswer);
         return lastAnswer;
     }
 

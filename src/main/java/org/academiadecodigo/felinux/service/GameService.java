@@ -13,7 +13,7 @@ public class GameService {
     private String currentQuestion;
     private int questionNumber;
     private int currentIdPlayer = 0;
-    private HashSet<Integer> questionList = new HashSet<>();
+    private final HashSet<Integer> questionList = new HashSet<>();
 
     public GameService(Server server) {
         this.server = server;
@@ -26,7 +26,7 @@ public class GameService {
         for (Integer questionNr : questionList) {
             if(questionNr == questionNumber) {
                 System.out.println("entrei aqui");
-                generateQuestion();
+                this.generateQuestion();
             }
         }
 
@@ -50,6 +50,8 @@ public class GameService {
         LinkedList<LinkedList<Client>> allMatchesList = new LinkedList<>();
 
         for (Client client : server.getClientMap().values()) {
+
+            System.out.println(client.getName() + "has " + client.getNumberOfCorrectAnswers());
 
             if (client.getNumberOfCorrectAnswers() == 10 ) {
                 genious.add(client);
