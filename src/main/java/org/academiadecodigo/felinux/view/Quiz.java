@@ -2,7 +2,7 @@ package org.academiadecodigo.felinux.view;
 
 public enum Quiz {
 
-    QUESTION_0(0,"quem é o maior ?\n", "benfica"),
+    QUESTION_0(0,"Quem é o maior ?\n", "benfica"),
     QUESTION_1(1, "What does Au stand for in the periodic table?\n", "gold"),
     QUESTION_2(2, "Which popular video game franchise has released games with the subtitled Modern Warfare and Black Ops?\n", "call of duty"),
     QUESTION_3(3, "Who's the best singer with fireworks?\n", "jorge martinez"),
