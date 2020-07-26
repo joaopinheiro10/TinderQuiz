@@ -133,8 +133,21 @@ public class GameController implements Controller {
     }
 
     public boolean checkAnswer(String answer){
+        sendAnswertoPlayers(answer);
         lastAnswer = gameService.checkAnswer(answer);
         return lastAnswer;
+    }
+
+    public void sendAnswertoPlayers(String answer) {
+
+        for (int key : bootstrapMap.keySet()) {
+
+            if (key != gameService.getCurrentIdPlayer()) {
+                bootstrapMap.get(key).getBroadcastView().showMatch(answer);
+            }
+
+        }
+
     }
 
     public void upDateResult(boolean answer){
