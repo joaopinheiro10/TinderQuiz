@@ -10,7 +10,7 @@ public class LoginController extends AbstractController {
 
     @Override
     public void execute() {
-        view.show();
+        super.execute();
         nextController.execute();
     }
 

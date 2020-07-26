@@ -10,8 +10,8 @@ public class Messages {
      * Menu options messages
      */
 
-    public static final String WELCOME = Colors.GREEN + "\n\n" +
-            PseudoTex.printText("Welcome To Tinder Quiz", 10)
+    public static final String WELCOME = Colors.GREEN +
+            PseudoTex.printText("Tinder Quiz", 10)
             + Colors.NOCOLOR;
 
     public static final String CONNECTED = "Connected to IP: ";

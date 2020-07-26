@@ -19,8 +19,6 @@ public class LoginView extends AbstractView {
 
         StringInputScanner scanner = new StringInputScanner();
 
-        printStream.println(Messages.WELCOME);
-
         scanner.setMessage(Messages.USERNAME);
 
         loginController.setName(prompt.getUserInput(scanner));

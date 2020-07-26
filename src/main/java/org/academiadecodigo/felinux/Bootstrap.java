@@ -39,8 +39,13 @@ public class Bootstrap {
 
     private BroadcastView broadcastView;
 
+
+    private WelcomeView welcomeView;
+
+
     private ExitController exitController;
     private ExitView exitView;
+
 
     public Bootstrap(int id, InputStream inputStream, PrintStream printStream, GameController gameController) {
         this.id = id;
@@ -49,6 +54,7 @@ public class Bootstrap {
         this.prompt = new Prompt(inputStream, printStream);
         this.gameController = gameController;
 
+        wireWelcome();
         wireLogin();
         wireMenu();
         wireRules();
@@ -64,6 +70,15 @@ public class Bootstrap {
         loginController.execute();
     }
 
+
+
+
+    private void wireWelcome() {
+
+        welcomeView = new WelcomeView();
+        welcomeView.setPrintStream(printStream);
+    }
+
     private void wireLogin() {
 
         loginView = new LoginView();
@@ -74,6 +89,7 @@ public class Bootstrap {
         loginView.setPrintStream(printStream);
         loginController.setGameController(gameController);
         loginController.setId(id);
+        loginController.setWelcomeView(welcomeView);
 
     }
 
@@ -85,6 +101,7 @@ public class Bootstrap {
         menuController.setView(menuView);
         menuView.setPrompt(prompt);
         menuView.setPrintStream(printStream);
+        menuController.setWelcomeView(welcomeView);
 
     }
 
@@ -97,6 +114,7 @@ public class Bootstrap {
         rulesView.setPrintStream(printStream);
         rulesView.setPrompt(prompt);
         rulesController.setNextController(menuController);
+        rulesController.setWelcomeView(welcomeView);
     }
 
     private void wireWaitForPlayers() {
@@ -106,6 +124,7 @@ public class Bootstrap {
         waitForPlayersController.setView(waitForPlayersView);
         waitForPlayersView.setPrintStream(printStream);
         waitForPlayersController.setGameController(gameController);
+        waitForPlayersController.setWelcomeView(welcomeView);
     }
 
     private void wireAnswer() {
@@ -117,6 +136,7 @@ public class Bootstrap {
         answeringView.setPrompt(prompt);
         answeringView.setPrintStream(printStream);
         answeringController.setGameController(gameController);
+        answeringController.setWelcomeView(welcomeView);
     }
 
     private void wireWaiting() {
@@ -128,7 +148,7 @@ public class Bootstrap {
         waitingView.setPrompt(prompt);
         waitingView.setPrintStream(printStream);
         waitingController.setGameController(gameController);
-
+        waitingController.setWelcomeView(welcomeView);
     }
 
     private void wireBroadcast() {
