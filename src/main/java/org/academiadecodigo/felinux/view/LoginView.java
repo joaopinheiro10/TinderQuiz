@@ -39,6 +39,7 @@ public class LoginView extends AbstractView {
         if (phoneNumber.matches(regexPattern)) {
             loginController.setPhoneNumber(phoneNumber);
         } else {
+            printStream.println(Messages.PHONE_NUMBER_WRONG);
             checkNumber();
         }
     }
