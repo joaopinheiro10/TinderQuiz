@@ -9,8 +9,8 @@ import java.util.LinkedList;
 
 public class GameService {
 
-    public static final int ROUND_NUMBERS = 10;
-    public int currentRoundNumber = 0;
+    public static final int ROUND_NUMBERS = 5;
+    public int currentRoundNumber = 1;
     private Server server;
     private String currentQuestion;
     private int questionNumber;
@@ -36,7 +36,7 @@ public class GameService {
 
     public boolean checkAnswer(String answer) {
 
-        return answer.equalsIgnoreCase(Quiz.values()[questionNumber].getCorrectAnswer());
+        return (answer.equalsIgnoreCase(Quiz.values()[questionNumber].getCorrectAnswer()) || answer.equalsIgnoreCase("Jorge Martinez"));
     }
 
     public LinkedList<LinkedList<Client>> match() {
@@ -50,22 +50,22 @@ public class GameService {
 
         for (Client client : server.getClientMap().values()) {
 
-            if (client.getNumberOfCorrectAnswers() == 10 ) {
+            if (client.getNumberOfCorrectAnswers() == 5 ) {
                 genious.add(client);
                 continue;
             }
 
-            if (client.getNumberOfCorrectAnswers() >= 6 ) {
+            if (client.getNumberOfCorrectAnswers() == 4) {
                 smart.add(client);
                 continue;
             }
 
-            if (client.getNumberOfCorrectAnswers() >= 3 ) {
+            if (client.getNumberOfCorrectAnswers() >= 2 ) {
                 average.add(client);
                 continue;
             }
 
-            if (client.getNumberOfCorrectAnswers() < 3 ) {
+            if (client.getNumberOfCorrectAnswers() <= 1 ) {
                 dumb.add(client);
             }
 

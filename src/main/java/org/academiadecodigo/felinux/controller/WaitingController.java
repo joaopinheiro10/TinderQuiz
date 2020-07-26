@@ -17,4 +17,5 @@ public class WaitingController extends AbstractController{
     public void setScoreView(View scoreView) {
         this.scoreView = scoreView;
     }
+
 }

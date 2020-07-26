@@ -14,6 +14,7 @@ public class AnsweringController extends AbstractController {
         view.show();
     }
 
+
     public void validateAnswer(String answer) {
         isAnswer = gameController.checkAnswer(answer);
         gameController.upDateResult(isAnswer);
