@@ -118,7 +118,7 @@ public class GameController implements Controller {
                         continue;
                     }
 
-                    String message = client.getName() + "- " + client.getPhoneNumber() + "\n";
+                    String message = client.getName() + " - " + client.getPhoneNumber() + "\n";
                     bootstrap.getBroadcastView().showMatch(message);
                 }
             }
