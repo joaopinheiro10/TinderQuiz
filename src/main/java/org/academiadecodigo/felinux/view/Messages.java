@@ -27,6 +27,7 @@ public class Messages {
     public static final String PHONE_NUMBER =Colors.BLUE + "What's your phone number: " + Colors.NOCOLOR;
     public static final String PHONE_NUMBER_WRONG =Colors.RED + "Please insert a valid phone number (p.ex: 9********)" + Colors.NOCOLOR;
     public static final String CURRENT_QUESTION = Colors.BLUE + "Current question is: " + Colors.NOCOLOR;
+    public static final String CURRENT_ROUND = "\n" + Colors.BLUE + "CURRENT ROUND: " + Colors.NOCOLOR;
 
     /**
      * Game messages
