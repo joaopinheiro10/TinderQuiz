@@ -23,7 +23,7 @@ public class ASCIIArtGenerator {
     public static final int ART_SIZE_MEDIUM = 18;
     public static final int ART_SIZE_LARGE = 24;
     public static final int ART_SIZE_HUGE = 32;
-    private static final String DEFAULT_ART_SYMBOL = "*";
+    private static final String DEFAULT_ART_SYMBOL = "%";
 
     /**
      * Prints ASCII art for the specified text. For size, you can use predefined sizes or a custom size.
@@ -39,7 +39,7 @@ public class ASCIIArtGenerator {
         String fontName = fontType.getValue();
         int imageWidth = findImageWidth(textHeight, artText, fontName);
 
-        BufferedImage image = new BufferedImage(imageWidth, textHeight, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(imageWidth, textHeight, BufferedImage.TYPE_4BYTE_ABGR_PRE);
         Graphics g = image.getGraphics();
         Font font = new Font(fontName, Font.BOLD, textHeight);
         g.setFont(font);
@@ -69,8 +69,16 @@ public class ASCIIArtGenerator {
      * @param textHeight
      * @throws Exception
      */
-    public static String printTextArt(String artText, int textHeight) throws Exception {
-        return printTextArt(artText, textHeight, ASCIIArtFont.ART_FONT_DIALOG, DEFAULT_ART_SYMBOL);
+    public static String printTextArt(String artText, int textHeight){
+        String result = "";
+
+        try {
+           result = printTextArt(artText, textHeight, ASCIIArtFont.ART_FONT_MONO, DEFAULT_ART_SYMBOL);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
     /**

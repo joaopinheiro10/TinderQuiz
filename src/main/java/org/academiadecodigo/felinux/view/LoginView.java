@@ -3,8 +3,7 @@ package org.academiadecodigo.felinux.view;
 import org.academiadecodigo.bootcamp.scanners.integer.IntegerInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.felinux.controller.LoginController;
-import org.academiadecodigo.felinux.server.Server;
-import org.academiadecodigo.felinux.utilits.ASCIIArtGenerator;
+
 
 public class LoginView extends AbstractView {
 
@@ -16,10 +15,13 @@ public class LoginView extends AbstractView {
 
     @Override
     public void show() {
-        System.out.println("HERE");
-        //prompt = new Prompt(server.getClientConnectionList().get(0).getInputStream(),
-                //server.getClientConnectionList().get(0).getPrintStream());
+
         StringInputScanner scanner = new StringInputScanner();
+        scanner.setError("");
+
+        System.out.println(prompt);
+        System.out.println(printStream);
+        printStream.println(Messages.WELCOME);
 
         scanner.setMessage(Messages.USERNAME);
 

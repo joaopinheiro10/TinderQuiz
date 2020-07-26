@@ -1,6 +1,8 @@
 package org.academiadecodigo.felinux.view;
 
+
 public class WaitForPlayersView extends AbstractView {
+
     @Override
     public void show() {
 
