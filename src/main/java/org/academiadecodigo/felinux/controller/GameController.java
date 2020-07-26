@@ -148,6 +148,11 @@ public class GameController implements Controller {
     public int getRoundNumber() {
         return gameService.getCurrentRoundNumber();
     }
+
+    public LinkedList<Client> getClients() {
+
+        return server.getClients();
+    }
 }
 
 

@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
-import java.util.Scanner;
+import java.util.LinkedList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -69,6 +69,14 @@ public class Server {
 
     public void setGameController(GameController gameController) {
         this.gameController = gameController;
+    }
+
+    public LinkedList<Client> getClients() {
+
+        LinkedList<Client> clients = new LinkedList<>();
+        clients.addAll(clientMap.values());
+
+        return clients;
     }
 
 }
