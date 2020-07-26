@@ -27,7 +27,7 @@ public class Messages {
 
     public static final String QUESTION = Colors.BLUE  + "Question: " + Colors.NOCOLOR;
     public static final String RIGHT = Colors.GREEN  + " got the right answer." + Colors.NOCOLOR;
-    public static final String WRONG = Colors.RED + " failed the answer, need Google that next time" + Colors.NOCOLOR;
+    public static final String WRONG = Colors.RED + " failed the answer, need Google it next time. But now DRINK!" + Colors.NOCOLOR;
     public static final String USERNAME = Colors.BLUE + "Insert your name: " + Colors.NOCOLOR;
     public static final String PHONE_NUMBER =Colors.BLUE + "What's your phone number: " + Colors.NOCOLOR;
     public static final String PHONE_NUMBER_WRONG =Colors.RED + "Please insert a valid phone number (p.ex: 9********)" + Colors.NOCOLOR;

@@ -18,4 +18,5 @@ public class WaitingView extends AbstractView{
         printStream.println(Messages.CURRENT_QUESTION + waitingController.getGameController().getQuestion());
 
     }
+
 }
