@@ -17,39 +17,16 @@ public class GameService {
         this.server = server;
     }
 
-    /*
-        public Prompt getUserPrompt(int playerNumber) {
-            return server.getClientConnectionList().get(playerNumber).getPrompt();
-        }
-
-        public void changeName(int playerNumber, String name) {
-            server.getClientConnectionList().get(playerNumber).getClient().setName(name);
-        }
-
-        public void phoneNumber(int playerNumber, int phoneNumber) {
-            server.getClientConnectionList().get(playerNumber).getClient().setPhoneNumber(phoneNumber);
-        }
-    */
     public String generateQuestion() {
         questionNumber = (int) (Math.floor(Math.random() * Quiz.values().length));
         currentQuestion = Quiz.values()[questionNumber].getQuestion();
         return currentQuestion;
     }
 
-    //Missing the answer back to the client
-    public boolean checkAnswer(int playerNumber, String answer) {
+    public boolean checkAnswer(String answer) {
 
-        if(answer.equalsIgnoreCase(Quiz.values()[questionNumber].getCorrectAnswer())){
-         //   rightAnswer(playerNumber);
-            return true;
-        }
-        return false;
+        return answer.equalsIgnoreCase(Quiz.values()[questionNumber].getCorrectAnswer());
     }
-/*
-    private void rightAnswer(int playerNumber) {
-        server.getClientConnectionList().get(playerNumber).getClient().correctAnswer();
-    }
-*/
 
     public LinkedList<LinkedList<Client>> match() {
 

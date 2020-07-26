@@ -18,7 +18,7 @@ public class LoginController extends AbstractController {
         gameController.changeName(id, userInput);
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         gameController.changePhoneNumber(id, phoneNumber);
     }
 

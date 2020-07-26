@@ -2,7 +2,7 @@ package org.academiadecodigo.felinux.model.client;
 
 public class Client {
     private String name;
-    private int phoneNumber;
+    private String phoneNumber;
     private int numberOfCorrectAnswers;
     private int id;
 
@@ -14,7 +14,7 @@ public class Client {
         return name;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -27,7 +27,7 @@ public class Client {
         System.out.println(name);
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

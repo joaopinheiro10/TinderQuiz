@@ -60,6 +60,6 @@ public enum Quiz {
     }
 
     public String getCorrectAnswer() {
-        return Colors.GREEN + correctAnswer + Colors.NOCOLOR;
+        return correctAnswer;
     }
 }

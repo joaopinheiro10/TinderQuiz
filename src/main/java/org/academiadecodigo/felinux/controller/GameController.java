@@ -26,7 +26,7 @@ public class GameController implements Controller {
         server.getClient(id).setName(name);
     }
 
-    public void changePhoneNumber (int id, int phoneNumber ) {
+    public void changePhoneNumber (int id, String phoneNumber ) {
         server.getClient(id).setPhoneNumber(phoneNumber);
     }
 
@@ -110,7 +110,9 @@ public class GameController implements Controller {
     }
 
     public boolean checkAnswer(String answer){
-        lastAnswer = gameService.checkAnswer(gameService.getCurrentIdPlayer(),answer);
+        System.out.println(lastAnswer);
+        lastAnswer = gameService.checkAnswer(answer);
+        System.out.println(lastAnswer);
         return lastAnswer;
     }
 

@@ -8,6 +8,7 @@ import org.academiadecodigo.felinux.controller.LoginController;
 public class LoginView extends AbstractView {
 
     private LoginController loginController;
+    private final String regexPattern = "(9[1236]\\d) ?(\\d{3}) ?(\\d{3})";
 
     public void setLoginController(LoginController loginController) {
         this.loginController = loginController;
@@ -19,8 +20,6 @@ public class LoginView extends AbstractView {
         StringInputScanner scanner = new StringInputScanner();
         scanner.setError("");
 
-        System.out.println(prompt);
-        System.out.println(printStream);
         printStream.println(Messages.WELCOME);
 
         scanner.setMessage(Messages.USERNAME);
@@ -28,10 +27,20 @@ public class LoginView extends AbstractView {
         scanner.setError("");
         loginController.setName(prompt.getUserInput(scanner));
 
+        checkNumber();
+    }
+
+    private void checkNumber() {
+
         IntegerInputScanner phone = new IntegerInputScanner();
         phone.setMessage(Messages.PHONE_NUMBER);
-        loginController.setPhoneNumber(prompt.getUserInput(phone));
+        String phoneNumber = prompt.getUserInput(phone).toString();
 
+        if (phoneNumber.matches(regexPattern)) {
+            loginController.setPhoneNumber(phoneNumber);
+        } else {
+            checkNumber();
+        }
     }
 
 }
