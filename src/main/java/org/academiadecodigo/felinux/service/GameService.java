@@ -4,21 +4,33 @@ import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.view.Quiz;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class GameService {
 
+    public static final int ROUND_NUMBERS = 10;
+    public int currentRoundNumber = 0;
     private Server server;
     private String currentQuestion;
     private int questionNumber;
     private int currentIdPlayer = 0;
+    private final HashSet<Integer> questionList = new HashSet<>();
 
     public GameService(Server server) {
         this.server = server;
     }
 
     public String generateQuestion() {
+
         questionNumber = (int) (Math.floor(Math.random() * Quiz.values().length));
+
+        if (questionList.contains(questionNumber)) {
+                System.out.println("entrei aqui");
+                generateQuestion();
+        }
+
+        questionList.add(questionNumber);
         currentQuestion = Quiz.values()[questionNumber].getQuestion();
         return currentQuestion;
     }
@@ -41,14 +53,17 @@ public class GameService {
 
             if (client.getNumberOfCorrectAnswers() == 10 ) {
                 genious.add(client);
+                continue;
             }
 
             if (client.getNumberOfCorrectAnswers() >= 6 ) {
                 smart.add(client);
+                continue;
             }
 
             if (client.getNumberOfCorrectAnswers() >= 3 ) {
                 average.add(client);
+                continue;
             }
 
             if (client.getNumberOfCorrectAnswers() < 3 ) {
@@ -76,10 +91,21 @@ public class GameService {
 
     public void upDateCurrentPlayer() {
         if((server.getClientMap().size() -1) == currentIdPlayer){
+            currentRoundNumber++;
             currentIdPlayer = 0;
             return;
         }
         currentIdPlayer++;
     }
 
+    public void removePlayer (int playerToRemove) {
+
+        this.server.getClientMap().remove(playerToRemove);
+        System.out.println("removi o player do client map, player nº " + playerToRemove);
+
+    }
+
+    public int getCurrentRoundNumber() {
+        return currentRoundNumber;
+    }
 }

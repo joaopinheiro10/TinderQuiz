@@ -1,6 +1,7 @@
 package org.academiadecodigo.felinux.view;
 
-import org.academiadecodigo.felinux.utilits.ASCIIArtGenerator;
+
+import org.academiadecodigo.felinux.utilits.PseudoTex;
 import org.academiadecodigo.felinux.utilits.RectangleBoxText;
 
 
@@ -9,8 +10,8 @@ public class Messages {
      * Menu options messages
      */
 
-    public static final String WELCOME = Colors.GREEN + "\n\n" +
-            ASCIIArtGenerator.printTextArt("Tinder Quiz", 10)
+    public static final String WELCOME = Colors.GREEN +
+            PseudoTex.printText("Tinder Quiz", 10)
             + Colors.NOCOLOR;
 
     public static final String MENU_VIEW = Colors.BLUE + "Please choose an option:" + Colors.NOCOLOR;
@@ -19,11 +20,12 @@ public class Messages {
     public static final String WAITING_FOR_PLAYERS = Colors.YELLOW + "The game will start when all players are ready.\n" +
             "Please wait." + Colors.NOCOLOR;
 
-    public static final String RIGHT = Colors.GREEN  + "Great Success" + Colors.NOCOLOR;
-    public static final String WRONG = Colors.RED + "Google that next time" + Colors.NOCOLOR;
-    public static final String USERNAME = Colors.BLUE + "Username: " + Colors.NOCOLOR;
+    public static final String QUESTION = Colors.BLUE  + "Question: " + Colors.NOCOLOR;
+    public static final String RIGHT = Colors.GREEN  + " got the right answer." + Colors.NOCOLOR;
+    public static final String WRONG = Colors.RED + " failed the answer, need Google that next time" + Colors.NOCOLOR;
+    public static final String USERNAME = Colors.BLUE + "Insert your name: " + Colors.NOCOLOR;
     public static final String PHONE_NUMBER =Colors.BLUE + "What's your phone number: " + Colors.NOCOLOR;
-    public static final String CURRENT_QUESTION = "This is the current question: ";
+    public static final String CURRENT_QUESTION = Colors.BLUE + "Current question is: " + Colors.NOCOLOR;
 
 
     /**
@@ -33,7 +35,7 @@ public class Messages {
     public static final String INSTRUCTIONS = "Instructions";
     public static final String EXIT = "Quit";
 
-    public static final String WAITING = " turn now, please wait...";
+    public static final String WAITING = Colors.YELLOW +  " turn now, please wait..." + Colors.NOCOLOR;
 
 
     public static final String GAMERULES = Colors.BLUE +  RectangleBoxText.printText("These are the game rules:\n" +
@@ -48,4 +50,3 @@ public class Messages {
 
     public static final String WAITINGCONNECTIONS = Colors.BLUE + "Waiting to save someone's life." + Colors.NOCOLOR;
 }
-

@@ -4,6 +4,8 @@ import org.academiadecodigo.felinux.Bootstrap;
 import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.service.GameService;
+import static org.academiadecodigo.felinux.service.GameService.ROUND_NUMBERS;
+import org.academiadecodigo.felinux.view.Colors;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -18,8 +20,6 @@ public class GameController implements Controller {
     private int numPlayersReady = 0;
 
     private boolean lastAnswer;
-    private final int ROUND_NUMBER = 10;
-    private int currentRoundNumber=0;
 
 
     public void changeName(int id, String name) {
@@ -38,12 +38,11 @@ public class GameController implements Controller {
     @Override
     public void execute() {
 
-        while (currentRoundNumber<ROUND_NUMBER) {
+        while (gameService.getCurrentRoundNumber() < ROUND_NUMBERS) {
 
             question = gameService.generateQuestion();
             whoAnswer();
             broadcast();
-            currentRoundNumber++;
         }
 
         broadcastMatch(gameService.match());
@@ -59,7 +58,6 @@ public class GameController implements Controller {
     }
 
     public void whoAnswer() {
-        System.out.println(bootstrapMap.size());
         for (int key : bootstrapMap.keySet()) {
             if (key != gameService.getCurrentIdPlayer()) {
                 bootstrapMap.get(key).getWaitingController().execute();
@@ -73,7 +71,7 @@ public class GameController implements Controller {
      */
     private void broadcast() {
        for(int key : bootstrapMap.keySet()) {
-           bootstrapMap.get(key).getBroadcastView().show(gameService.getCurrentPlayer().getName(), lastAnswer);
+           bootstrapMap.get(key).getBroadcastView().show(Colors.BLUE + gameService.getCurrentPlayer().getName() + Colors.NOCOLOR, lastAnswer);
        }
        gameService.upDateCurrentPlayer();
     }
@@ -82,7 +80,11 @@ public class GameController implements Controller {
 
         for (LinkedList<Client> linkedList : allMatch) {
 
-            if (linkedList.size()<=1) {
+            if(linkedList.size() < 1) {
+                continue;
+            }
+
+            if (linkedList.size() ==1) {
                 bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch("You have no matches! Loser.");
                 continue;
             }
@@ -110,9 +112,7 @@ public class GameController implements Controller {
     }
 
     public boolean checkAnswer(String answer){
-        System.out.println(lastAnswer);
         lastAnswer = gameService.checkAnswer(answer);
-        System.out.println(lastAnswer);
         return lastAnswer;
     }
 
@@ -130,6 +130,23 @@ public class GameController implements Controller {
         if (numPlayersReady == 2) { // REPLACE 2 WITH NUMBER OF PLAYERS
             execute();
         }
+    }
+
+    public void removePlayer (int id) {
+
+        removePlayerFromBootstrap(id);
+        gameService.removePlayer(id);
+
+    }
+
+    private void removePlayerFromBootstrap(int playerID) {
+
+        this.bootstrapMap.remove(playerID);
+
+    }
+
+    public int getRoundNumber() {
+        return gameService.getCurrentRoundNumber();
     }
 }
 

@@ -14,10 +14,8 @@ public class AnsweringView extends AbstractView{
     @Override
     public void show() {
         StringInputScanner scanner = new StringInputScanner();
-        scanner.setMessage(Colors.BLUE + answeringController.getGameController().getQuestion() + Colors.NOCOLOR);
+        scanner.setMessage(Messages.QUESTION + Colors.BLUE + answeringController.getGameController().getQuestion() + Colors.NOCOLOR);
         scanner.setError("");
-        String test = prompt.getUserInput(scanner);
-        System.out.println(test);
-        answeringController.validateAnswer(test);
+        answeringController.validateAnswer(prompt.getUserInput(scanner));
     }
 }
