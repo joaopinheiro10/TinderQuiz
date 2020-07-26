@@ -13,7 +13,7 @@ public class WaitingView extends AbstractView{
     @Override
     public void show() {
 
-        printStream.println(Messages.WAITING + "\n");
+        printStream.println(waitingController.getGameController().getCurrentPlayerName() + Messages.WAITING);
         printStream.println(Messages.CURRENT_QUESTION + waitingController.getGameController().getQuestion());
 
 

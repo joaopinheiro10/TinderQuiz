@@ -4,6 +4,7 @@ package org.academiadecodigo.felinux.server;
 import org.academiadecodigo.felinux.controller.GameController;
 import org.academiadecodigo.felinux.controller.LoginController;
 import org.academiadecodigo.felinux.model.client.Client;
+import org.academiadecodigo.felinux.view.Messages;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -39,7 +40,7 @@ public class Server {
 
             try {
 
-                System.out.println("Waiting to save someone's life.");
+                System.out.println(Messages.WAITINGCONNECTIONS);
                 Socket clientSocket = this.serverSocket.accept();
                 System.out.println("Connected to IP: " + clientSocket.getInetAddress() + " at Port: " + clientSocket.getPort());
                 ClientConnection clientConnection = new ClientConnection(clientSocket, counter);

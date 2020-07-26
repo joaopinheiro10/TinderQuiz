@@ -82,8 +82,6 @@ public class GameController implements Controller {
 
         for (LinkedList<Client> linkedList : allMatch) {
 
-            System.out.println(linkedList.size());
-
             if (linkedList.size()<=1) {
                 bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch("You have no matches! Loser.");
                 continue;
@@ -118,6 +116,10 @@ public class GameController implements Controller {
 
     public void upDateResult(boolean answer){
         gameService.getCurrentPlayer().updateScore(answer);
+    }
+
+    public String getCurrentPlayerName(){
+       return gameService.getCurrentPlayer().getName();
     }
 
 

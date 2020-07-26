@@ -20,8 +20,6 @@ public class RulesView extends AbstractView{
     public void show() {
 
         printStream.println(Messages.GAMERULES);
-
-        System.out.println("estou nas rules men");
         backToMenu();
 
     }
@@ -31,7 +29,7 @@ public class RulesView extends AbstractView{
 
         String[] options = {"Go Back"};
         MenuInputScanner menu = new MenuInputScanner(options);
-        menu.setMessage(Messages.MENU_VIEW);
+        menu.setMessage(Colors.BLUE + Messages.MENU_VIEW + Colors.NOCOLOR);
         menu.setError(Messages.MENU_VIEW_ERROR);
 
         prompt.getUserInput(menu);

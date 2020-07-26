@@ -17,7 +17,7 @@ public class MenuView extends AbstractView {
     public void show() {
 
         MenuInputScanner menuScanner = new MenuInputScanner(UserOptions.getMessages());
-        menuScanner.setMessage(Messages.MENU_VIEW);
+        menuScanner.setMessage(Colors.BLUE + Messages.MENU_VIEW + Colors.NOCOLOR);
         menuScanner.setError(Messages.MENU_VIEW_ERROR);
 
 

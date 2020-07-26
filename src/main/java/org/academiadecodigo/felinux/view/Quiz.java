@@ -38,7 +38,7 @@ public enum Quiz {
     QUESTION_33(33, "Who scored the first Premier League hat-trick?\n", "eric cantona"),
     QUESTION_34(34, "In Spain what is the word for an afternoon nap?\n", "siesta"),
     QUESTION_35(35, "In which town do the Flintstones live?\n", "bedrock"),
-    QUESTION_36(36, "Where were Norse gods said to live?", "asgard"),
+    QUESTION_36(36, "Where were Norse gods said to live?\n", "asgard"),
     QUESTION_37(37, "Gisaengchung is the original title of this South Korean film which collected four Oscars in 2020. What is the English title?\n", "parasite"),
     QUESTION_38(38, "In which US city did George Floyd die after being subdued by police officers?\n", "minneapolis"),
     QUESTION_39(39, "Who portrayed Edward Scissorhands?\n", "johnny depp"),
@@ -56,10 +56,10 @@ public enum Quiz {
     }
 
     public String getQuestion() {
-        return question;
+        return Colors.YELLOW + question + Colors.NOCOLOR;
     }
 
     public String getCorrectAnswer() {
-        return correctAnswer;
+        return Colors.GREEN + correctAnswer + Colors.NOCOLOR;
     }
 }
