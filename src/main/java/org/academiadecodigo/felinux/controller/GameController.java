@@ -128,6 +128,21 @@ public class GameController implements Controller {
             execute();
         }
     }
+
+    public void removePlayer (int id) {
+
+        removePlayerFromBootstrap(id);
+        gameService.removePlayer(id);
+
+    }
+
+
+    private void removePlayerFromBootstrap(int playerID) {
+
+        this.bootstrapMap.remove(playerID);
+
+    }
+
 }
 
 
