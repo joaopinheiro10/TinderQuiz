@@ -35,8 +35,11 @@ public class Bootstrap {
     private WaitingController waitingController;
     private WaitingView waitingView;
 
+
     private WaitForPlayersController waitForPlayersController;
     private WaitForPlayersView waitForPlayersView;
+
+    private BroadcastView broadcastView;
 
 
     public Bootstrap(int id, InputStream inputStream, PrintStream printStream, GameController gameController) {
@@ -53,6 +56,7 @@ public class Bootstrap {
         setupMenuMap();
         wireWaiting();
         wireAnswer();
+        wireBroadcast();
 
         gameController.addBootstrap(id,this);
 
@@ -129,6 +133,13 @@ public class Bootstrap {
 
     }
 
+    private void wireBroadcast() {
+        broadcastView = new BroadcastView();
+        broadcastView.setGameController(gameController);
+        broadcastView.setPrompt(prompt);
+        broadcastView.setPrintStream(printStream);
+    }
+
     private void setupMenuMap() {
         Map<Integer, Controller> menuMap = new HashMap<>();
         menuMap.put(UserOptions.START_GAME.getOption(), waitForPlayersController);
@@ -143,5 +154,9 @@ public class Bootstrap {
 
     public AnsweringController getAnsweringController() {
         return answeringController;
+    }
+
+    public BroadcastView getBroadcastView() {
+        return broadcastView;
     }
 }

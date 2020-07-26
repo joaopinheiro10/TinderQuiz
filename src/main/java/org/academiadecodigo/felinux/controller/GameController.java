@@ -12,7 +12,11 @@ public class GameController implements Controller {
     private String question;
     private GameService gameService;
     private HashMap<Integer, Bootstrap> bootstrapMap = new HashMap<>();
+
     private int numPlayersReady = 0;
+
+    private boolean lastAnswer;
+
 
 
     public void changeName(int id, String name) {
@@ -33,6 +37,7 @@ public class GameController implements Controller {
         question = gameService.generateQuestion();
         System.out.println(question);
         whoAnswer();
+        broadcast();
         System.out.println("before loop");
         execute();
     }
@@ -57,13 +62,23 @@ public class GameController implements Controller {
         bootstrapMap.get(gameService.getCurrentIdPlayer()).getAnsweringController().execute();
     }
 
-    public  boolean checkAnswer(String answer){
-      return gameService.checkAnswer(gameService.getCurrentIdPlayer(),answer);
+    /**
+     * Sends a message to all the clients connected
+     */
+    private void broadcast() {
+       for(int key : bootstrapMap.keySet()) {
+           bootstrapMap.get(key).getBroadcastView().show(gameService.getCurrentPlayer().getName(), lastAnswer);
+       }
+       gameService.upDateCurrentPlayer();
+    }
+
+    public boolean checkAnswer(String answer){
+        lastAnswer = gameService.checkAnswer(gameService.getCurrentIdPlayer(),answer);
+        return lastAnswer;
     }
 
     public void upDateResult(boolean answer){
         gameService.getCurrentPlayer().updateScore(answer);
-        gameService.upDateCurrentPlayer();
     }
 
 

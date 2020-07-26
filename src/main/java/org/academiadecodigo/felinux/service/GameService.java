@@ -49,18 +49,6 @@ public class GameService {
         server.getClientConnectionList().get(playerNumber).getClient().correctAnswer();
     }
 */
-    /**
-     * Sends a message to all the clients connected
-     * @param message string to send
-     */
-    public void broadcast(String message) {
-/*
-        LinkedList<ClientConnection> temp = server.getClientConnectionList();
-
-        for(ClientConnection client: temp) {
-            client.send(message);
-        }*/
-    }
 
     public String match() {
         return null;
@@ -71,7 +59,7 @@ public class GameService {
     }
 
     public Client getCurrentPlayer(){
-    return server.getClient(currentIdPlayer);
+        return server.getClient(currentIdPlayer);
     }
 
     public void upDateCurrentPlayer() {
