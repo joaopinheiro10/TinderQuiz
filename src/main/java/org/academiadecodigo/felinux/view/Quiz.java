@@ -5,7 +5,7 @@ public enum Quiz {
     QUESTION_0(0,"quem é o maior ?\n", "benfica"),
     QUESTION_1(1, "What does Au stand for in the periodic table?\n", "gold"),
     QUESTION_2(2, "Which popular video game franchise has released games with the subtitled Modern Warfare and Black Ops?\n", "call of duty"),
-    QUESTION_3(3, "Who's the best singer with fireworks?\n", "jorge martínez"),
+    QUESTION_3(3, "Who's the best singer with fireworks?\n", "jorge martinez"),
     QUESTION_4(4, "Name the composer behind the soundtracks of The Lion King, Inception and Pirates of the Caribbean.\n", "hanz zimmer"),
     QUESTION_5(5, "Which 2014 Seth Rogan film caused the North Korean government to threaten action against the United States?\n", "the interview"),
     QUESTION_6(6, "What is the capital city of Australia?\n", "canberra"),

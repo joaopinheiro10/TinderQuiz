@@ -18,7 +18,6 @@ public class MenuController extends AbstractController {
         }
 
         controllerMap.get(userInput).execute();
-        execute();
     }
 
 }

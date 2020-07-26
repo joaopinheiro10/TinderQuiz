@@ -1,10 +1,12 @@
 package org.academiadecodigo.felinux.controller;
 
 import org.academiadecodigo.felinux.Bootstrap;
+import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.service.GameService;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class GameController implements Controller {
 
@@ -13,10 +15,19 @@ public class GameController implements Controller {
     private GameService gameService;
     private HashMap<Integer, Bootstrap> bootstrapMap = new HashMap<>();
 
+    private int numPlayersReady = 0;
+
+    private boolean lastAnswer;
+    private final int ROUND_NUMBER = 10;
+    private int currentRoundNumber=0;
+
 
     public void changeName(int id, String name) {
         server.getClient(id).setName(name);
-        System.out.println(name);
+    }
+
+    public void changePhoneNumber (int id, int phoneNumber ) {
+        server.getClient(id).setPhoneNumber(phoneNumber);
     }
 
     public void setServer(Server server) {
@@ -26,11 +37,17 @@ public class GameController implements Controller {
 
     @Override
     public void execute() {
-        question = gameService.generateQuestion();
-        System.out.println(question);
-        whoAnswer();
-        System.out.println("before loop");
-        execute();
+
+        while (currentRoundNumber<ROUND_NUMBER) {
+
+            question = gameService.generateQuestion();
+            whoAnswer();
+            broadcast();
+            currentRoundNumber++;
+        }
+
+        broadcastMatch(gameService.match());
+
     }
 
     public String getQuestion() {
@@ -53,15 +70,62 @@ public class GameController implements Controller {
         bootstrapMap.get(gameService.getCurrentIdPlayer()).getAnsweringController().execute();
     }
 
-    public  boolean checkAnswer(String answer){
-      return gameService.checkAnswer(gameService.getCurrentIdPlayer(),answer);
+    /**
+     * Sends a message to all the clients connected
+     */
+    private void broadcast() {
+       for(int key : bootstrapMap.keySet()) {
+           bootstrapMap.get(key).getBroadcastView().show(gameService.getCurrentPlayer().getName(), lastAnswer);
+       }
+       gameService.upDateCurrentPlayer();
+    }
+
+    private void broadcastMatch ( LinkedList<LinkedList<Client>> allMatch ) {
+
+        for (LinkedList<Client> linkedList : allMatch) {
+
+            for (Client client : linkedList) {
+
+                String message = "YOU HAVE A MATCH WITH THE FOLLOWING PLAYERS: \n\n";
+                for (Bootstrap bootstrap : bootstrapMap.values()) {
+
+                    if ( client.getId() == bootstrap.getID() ) {
+                        continue;
+                    }
+
+                    message += client.getName() + "-" + client.getPhoneNumber() + "\n";
+                    bootstrap.getBroadcastView().showMatch(message);
+
+                }
+
+
+            }
+
+        }
+
+
+    }
+
+    public boolean checkAnswer(String answer){
+        lastAnswer = gameService.checkAnswer(gameService.getCurrentIdPlayer(),answer);
+        return lastAnswer;
     }
 
     public void upDateResult(boolean answer){
         gameService.getCurrentPlayer().updateScore(answer);
-        gameService.upDateCurrentPlayer();
     }
 
+    public String getCurrentPlayerName(){
+       return gameService.getCurrentPlayer().getName();
+    }
+
+
+    public void addPlayerReady() {
+        numPlayersReady++;
+        if (numPlayersReady == 2) { // REPLACE 2 WITH NUMBER OF PLAYERS
+            execute();
+        }
+    }
 }
 
 

@@ -13,7 +13,7 @@ public class WaitingView extends AbstractView{
     @Override
     public void show() {
 
-        printStream.println(Messages.WAITING);
+        printStream.println(waitingController.getGameController().getCurrentPlayerName() + Messages.WAITING);
 
         //Invocar aqui o broadcast?
 

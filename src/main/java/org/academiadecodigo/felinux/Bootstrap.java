@@ -12,13 +12,12 @@ import java.util.Map;
 
 public class Bootstrap {
 
-    private Client client = new Client();
     private GameController gameController;
     private InputStream inputStream;
     private PrintStream printStream;
     private Prompt prompt;
     private int id;
-
+    private Client client = new Client(id);
 
     private LoginView loginView;
     private LoginController loginController;
@@ -36,22 +35,34 @@ public class Bootstrap {
     private WaitingView waitingView;
 
 
+    private WaitForPlayersController waitForPlayersController;
+    private WaitForPlayersView waitForPlayersView;
+
+    private BroadcastView broadcastView;
+
+
     public Bootstrap(int id, InputStream inputStream, PrintStream printStream, GameController gameController) {
         this.id = id;
         this.inputStream = inputStream;
         this.printStream = printStream;
         this.prompt = new Prompt(inputStream, printStream);
         this.gameController = gameController;
+
         wireLogin();
         wireMenu();
         wireRules();
+        wireWaitForPlayers();
         setupMenuMap();
         wireWaiting();
         wireAnswer();
+        wireBroadcast();
+
         gameController.addBootstrap(id,this);
 
         loginController.execute();
     }
+
+
 
 
     private void wireLogin() {
@@ -86,7 +97,18 @@ public class Bootstrap {
         rulesView.setRulesController(rulesController);
         rulesView.setPrintStream(printStream);
         rulesView.setPrompt(prompt);
+        rulesController.setNextController(menuController);
     }
+
+    private void wireWaitForPlayers() {
+
+        waitForPlayersController = new WaitForPlayersController();
+        waitForPlayersView = new WaitForPlayersView();
+        waitForPlayersController.setView(waitForPlayersView);
+        waitForPlayersView.setPrintStream(printStream);
+        waitForPlayersController.setGameController(gameController);
+    }
+
     private void wireAnswer() {
 
         answeringController = new AnsweringController();
@@ -110,9 +132,16 @@ public class Bootstrap {
 
     }
 
+    private void wireBroadcast() {
+        broadcastView = new BroadcastView();
+        broadcastView.setGameController(gameController);
+        broadcastView.setPrompt(prompt);
+        broadcastView.setPrintStream(printStream);
+    }
+
     private void setupMenuMap() {
         Map<Integer, Controller> menuMap = new HashMap<>();
-        menuMap.put(UserOptions.START_GAME.getOption(), gameController);
+        menuMap.put(UserOptions.START_GAME.getOption(), waitForPlayersController);
         menuMap.put(UserOptions.INSTRUCTIONS.getOption(), rulesController);
 
         menuController.setControllerMap(menuMap);
@@ -124,5 +153,13 @@ public class Bootstrap {
 
     public AnsweringController getAnsweringController() {
         return answeringController;
+    }
+
+    public BroadcastView getBroadcastView() {
+        return broadcastView;
+    }
+
+    public int getID () {
+        return this.id;
     }
 }

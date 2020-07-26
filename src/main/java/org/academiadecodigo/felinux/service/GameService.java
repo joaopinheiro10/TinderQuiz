@@ -1,16 +1,17 @@
 package org.academiadecodigo.felinux.service;
 
-import org.academiadecodigo.felinux.controller.GameController;
 import org.academiadecodigo.felinux.model.client.Client;
 import org.academiadecodigo.felinux.server.Server;
 import org.academiadecodigo.felinux.view.Quiz;
+
+import java.util.LinkedList;
 
 public class GameService {
 
     private Server server;
     private String currentQuestion;
     private int questionNumber;
-    private  int currentIdPlayer = 0;
+    private int currentIdPlayer = 0;
 
     public GameService(Server server) {
         this.server = server;
@@ -49,21 +50,43 @@ public class GameService {
         server.getClientConnectionList().get(playerNumber).getClient().correctAnswer();
     }
 */
-    /**
-     * Sends a message to all the clients connected
-     * @param message string to send
-     */
-    public void broadcast(String message) {
-/*
-        LinkedList<ClientConnection> temp = server.getClientConnectionList();
 
-        for(ClientConnection client: temp) {
-            client.send(message);
-        }*/
-    }
+    public LinkedList<LinkedList<Client>> match() {
 
-    public String match() {
-        return null;
+        LinkedList<Client> dumb = new LinkedList<>();
+        LinkedList<Client> average = new LinkedList<>();
+        LinkedList<Client> smart = new LinkedList<>();
+        LinkedList<Client> genious = new LinkedList<>();
+
+        LinkedList<LinkedList<Client>> allMatchesList = new LinkedList<>();
+
+        for (Client client : server.getClientMap().values()) {
+
+            if (client.getNumberOfCorrectAnswers() <= 3 ) {
+                dumb.add(client);
+            }
+
+            if (client.getNumberOfCorrectAnswers() <= 6 ) {
+                average.add(client);
+            }
+
+            if (client.getNumberOfCorrectAnswers() <= 9 ) {
+                smart.add(client);
+            }
+
+            if (client.getNumberOfCorrectAnswers() == 10 ) {
+                genious.add(client);
+            }
+
+        }
+
+        allMatchesList.add(dumb);
+        allMatchesList.add(average);
+        allMatchesList.add(smart);
+        allMatchesList.add(genious);
+
+        return allMatchesList;
+
     }
 
     public int getCurrentIdPlayer() {
@@ -71,7 +94,7 @@ public class GameService {
     }
 
     public Client getCurrentPlayer(){
-    return server.getClient(currentIdPlayer);
+        return server.getClient(currentIdPlayer);
     }
 
     public void upDateCurrentPlayer() {

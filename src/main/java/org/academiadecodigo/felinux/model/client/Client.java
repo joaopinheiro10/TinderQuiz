@@ -4,6 +4,11 @@ public class Client {
     private String name;
     private int phoneNumber;
     private int numberOfCorrectAnswers;
+    private int id;
+
+    public Client (int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -32,5 +37,9 @@ public class Client {
             return;
         }
         this.numberOfCorrectAnswers++;
+    }
+
+    public int getId () {
+        return id;
     }
 }

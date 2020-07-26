@@ -14,10 +14,12 @@ public class LoginController extends AbstractController {
         nextController.execute();
     }
 
-    public void setOK(String userInput) {
-    }
-
     public void setName(String userInput) {
         gameController.changeName(id, userInput);
     }
+
+    public void setPhoneNumber(int phoneNumber) {
+        gameController.changePhoneNumber(id, phoneNumber);
+    }
+
 }
