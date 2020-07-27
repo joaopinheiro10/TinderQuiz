@@ -22,7 +22,9 @@ public class Server {
 
     private final ServerSocket serverSocket;
 
-    GameController gameController;
+    private GameController gameController;
+
+    private int counter = 0;
 
     public Server(int portNumber) throws IOException {
 
@@ -33,7 +35,6 @@ public class Server {
 
     public void start() {
 
-        int counter = 0;
         while (true) {
 
             try {
@@ -78,4 +79,7 @@ public class Server {
         return clients;
     }
 
+    public void resetCounter() {
+        counter = 0;
+    }
 }
