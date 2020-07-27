@@ -1,8 +1,11 @@
 package org.academiadecodigo.felinux.controller;
 
+import org.academiadecodigo.felinux.model.client.Client;
+
 public class LoginController extends AbstractController {
 
     private Controller nextController;
+    private Client client;
 
     public void setNextController ( Controller nextController ) {
         this.nextController = nextController;
@@ -15,11 +18,14 @@ public class LoginController extends AbstractController {
     }
 
     public void setName(String userInput) {
-        gameController.changeName(id, userInput);
+        client.setName(userInput);
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        gameController.changePhoneNumber(id, phoneNumber);
+        client.setPhoneNumber(phoneNumber);
     }
 
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }

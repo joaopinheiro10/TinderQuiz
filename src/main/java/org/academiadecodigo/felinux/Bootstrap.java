@@ -73,8 +73,6 @@ public class Bootstrap {
         wireBroadcast();
         wireExit();
 
-        gameController.addBootstrap(id,this);
-
         loginController.execute();
     }
 
@@ -117,6 +115,7 @@ public class Bootstrap {
         loginController.setGameController(gameController);
         loginController.setId(id);
         loginController.setWelcomeView(welcomeView);
+        loginController.setClient(client);
 
     }
 
@@ -152,6 +151,9 @@ public class Bootstrap {
         waitForPlayersView.setPrintStream(printStream);
         waitForPlayersController.setGameController(gameController);
         waitForPlayersController.setWelcomeView(welcomeView);
+        waitForPlayersController.setId(id);
+        waitForPlayersController.setBootstrap(this);
+        waitForPlayersController.setClient(client);
     }
 
     private void wireScore() {

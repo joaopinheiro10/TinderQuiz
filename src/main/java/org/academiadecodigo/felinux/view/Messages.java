@@ -48,7 +48,7 @@ public class Messages {
 
 
     public static final String GAMERULES = Colors.BLUE + RectangleBoxText.printText("These are the game rules:\n" +
-                    "\n1- 4 Players\n" +
+                    "\n1- Minimum of 4 Players\n" +
                     "2- Each round every player receives a question\n" +
                     "3- If you answer it right, don't drink and move on to the next \n" +
                     "4- If you fail, drink, move on to the next\n" +

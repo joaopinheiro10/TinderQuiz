@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 
 public class Server {
 
-    private static final int NUMBER_OF_THREADS = 4;
+    private static final int NUMBER_OF_THREADS = 20;
     private final ExecutorService threadPool;
 
     private final HashMap<Integer, Client> clientMap = new HashMap<>();
@@ -45,7 +45,6 @@ public class Server {
                 clientConnection.setGameController(gameController);
                 threadPool.submit(clientConnection);
 
-                clientMap.put(counter, new Client(counter));
                 counter++;
 
             } catch (IOException exception) {
