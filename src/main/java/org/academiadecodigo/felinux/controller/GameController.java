@@ -25,15 +25,6 @@ public class GameController implements Controller {
 
     private boolean lastAnswer;
 
-
-    public void changeName(int id, String name) {
-        server.getClient(id).setName(name);
-    }
-
-    public void changePhoneNumber(int id, String phoneNumber) {
-        server.getClient(id).setPhoneNumber(phoneNumber);
-    }
-
     public void setServer(Server server) {
         this.server = server;
         gameService = new GameService(server);
