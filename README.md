@@ -6,7 +6,7 @@
 
 ## Rules
 
- - 4 Players
+ - Minimum of 4 Players
  - Each round every player receives a question
  - If you answer it right, don't drink and move on to the next
  - If you fail, drink, move on to the next

@@ -31,6 +31,11 @@ public class GameService {
         }
 
         questionList.add(questionNumber);
+
+        if (questionList.size() == Quiz.values().length) {
+            questionList.clear();
+        }
+
         currentQuestion = Quiz.values()[questionNumber].getQuestion();
         return currentQuestion;
     }

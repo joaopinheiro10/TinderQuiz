@@ -201,6 +201,10 @@ public class GameController implements Controller {
 
         return server.getClients();
     }
+
+    public void addClient(int id, Client client) {
+        server.getClientMap().put(id, client);
+    }
 }
 
 
