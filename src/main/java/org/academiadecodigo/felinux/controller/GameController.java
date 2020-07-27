@@ -51,6 +51,7 @@ public class GameController implements Controller {
 
         numPlayersReady = 0;
 
+        server.resetCounter();
         server.getClientMap().clear();
 
         for ( Bootstrap bootstrap : bootstrapMap.values()) {

@@ -52,7 +52,7 @@ public class Messages {
                     "2- Each round every player receives a question\n" +
                     "3- If you answer it right, don't drink and move on to the next \n" +
                     "4- If you fail, drink, move on to the next\n" +
-                    "5- The game ends after 10 rounds\n" +
+                    "5- The game ends after 5 rounds\n" +
                     "6- After the end, game checks if you matched with someone\n"
             , 100, 15) + Colors.NOCOLOR;
 
