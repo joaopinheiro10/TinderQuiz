@@ -45,7 +45,6 @@ public class Server {
                 clientConnection.setGameController(gameController);
                 threadPool.submit(clientConnection);
 
-                //clientMap.put(counter, new Client(counter));
                 counter++;
 
             } catch (IOException exception) {
