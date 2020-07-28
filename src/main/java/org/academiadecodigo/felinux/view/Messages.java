@@ -23,7 +23,7 @@ public class Messages {
     public static final String WAITING_FOR_PLAYERS = Colors.YELLOW + "The game will start when all players are ready.\n" +
             "Please wait." + Colors.NOCOLOR;
 
-    public static final String[] OPTIONS = {"Go Back."};
+    public static final String[] OPTIONS = {"Go Back to Menu."};
 
     public static final String QUESTION = Colors.BLUE + " is your turn: " + Colors.NOCOLOR;
     public static final String RIGHT = Colors.GREEN  + " got the right answer." + Colors.NOCOLOR;

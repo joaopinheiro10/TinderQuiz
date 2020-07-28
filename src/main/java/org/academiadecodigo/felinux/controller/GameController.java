@@ -43,21 +43,25 @@ public class GameController implements Controller {
         broadcastSearching();
         broadcastMatch(gameService.match());
 
-        closeEverything();
+        restart();
     }
 
 
-    private void closeEverything() {
+    private void restart() {
 
         numPlayersReady = 0;
 
         gameService.resetCurrentRoundNumber();
 
+        for (Client client : server.getClients()) {
+            client.resetNumberOfCorrectAnswers();
+        }
+
         server.resetCounter();
         server.getClientMap().clear();
 
         for (Bootstrap bootstrap : bootstrapMap.values()) {
-            bootstrap.closeSocket();
+            bootstrap.goBackToMenu();
         }
         bootstrapMap.clear();
     }

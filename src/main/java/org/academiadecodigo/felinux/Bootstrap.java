@@ -48,6 +48,8 @@ public class Bootstrap {
 
     private WelcomeView welcomeView;
 
+    private EndController endController;
+    private EndView endView;
 
     private ExitController exitController;
 
@@ -74,6 +76,7 @@ public class Bootstrap {
         wireWaiting();
         wireAnswer();
         wireBroadcast();
+        wireEnd();
         wireExit();
 
         loginController.execute();
@@ -198,6 +201,14 @@ public class Bootstrap {
         broadcastView.setPrintStream(printStream);
     }
 
+    private void wireEnd() {
+        endController = new EndController();
+        endView = new EndView();
+        endController.setView(endView);
+        endController.setNextController(menuController);
+        endView.setPrompt(prompt);
+    }
+
     private void wireExit() {
 
         exitController = new ExitController();
@@ -227,5 +238,10 @@ public class Bootstrap {
 
     public BroadcastView getBroadcastView() {
         return broadcastView;
+    }
+
+    public void goBackToMenu() {
+        Thread backToMenu = new Thread(endController);
+        backToMenu.start();
     }
 }
