@@ -21,8 +21,8 @@ public class Bootstrap {
     private PrintStream printStream;
     private final Prompt prompt;
 
-    private int id;
-    private final Client client = new Client(id);
+    private final int id;
+    private final Client client;
 
     private LoginView loginView;
     private LoginController loginController;
@@ -48,11 +48,14 @@ public class Bootstrap {
 
     private WelcomeView welcomeView;
 
+    private EndController endController;
+    private EndView endView;
 
     private ExitController exitController;
 
 
     public Bootstrap(int id, Socket socket, GameController gameController) {
+
         this.id = id;
         this.socket = socket;
 
@@ -60,6 +63,8 @@ public class Bootstrap {
 
         this.prompt = new Prompt(inputStream, printStream);
         this.gameController = gameController;
+
+        this.client = new Client(id);
 
         wireWelcome();
         wireLogin();
@@ -71,11 +76,11 @@ public class Bootstrap {
         wireWaiting();
         wireAnswer();
         wireBroadcast();
+        wireEnd();
         wireExit();
 
         loginController.execute();
     }
-
 
 
     private void createStreams() {
@@ -196,6 +201,14 @@ public class Bootstrap {
         broadcastView.setPrintStream(printStream);
     }
 
+    private void wireEnd() {
+        endController = new EndController();
+        endView = new EndView();
+        endController.setView(endView);
+        endController.setNextController(menuController);
+        endView.setPrompt(prompt);
+    }
+
     private void wireExit() {
 
         exitController = new ExitController();
@@ -227,7 +240,8 @@ public class Bootstrap {
         return broadcastView;
     }
 
-    public int getID () {
-        return this.id;
+    public void goBackToMenu() {
+        Thread backToMenu = new Thread(endController);
+        backToMenu.start();
     }
 }

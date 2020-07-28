@@ -1,6 +1,5 @@
 package org.academiadecodigo.felinux.view;
 
-import org.academiadecodigo.bootcamp.scanners.integer.IntegerInputScanner;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.felinux.controller.LoginController;
 

@@ -40,4 +40,8 @@ public class Client {
     public int getId () {
         return id;
     }
+
+    public void resetNumberOfCorrectAnswers() {
+        numberOfCorrectAnswers = 0;
+    }
 }

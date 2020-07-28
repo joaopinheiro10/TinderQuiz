@@ -40,24 +40,29 @@ public class GameController implements Controller {
             broadcast();
         }
 
-        endGame();
+        broadcastSearching();
         broadcastMatch(gameService.match());
 
-        closeEverything();
+        restart();
     }
 
 
-    private void closeEverything() {
+    private void restart() {
 
         numPlayersReady = 0;
+
+        gameService.resetCurrentRoundNumber();
+
+        for (Client client : server.getClients()) {
+            client.resetNumberOfCorrectAnswers();
+        }
 
         server.resetCounter();
         server.getClientMap().clear();
 
-        for ( Bootstrap bootstrap : bootstrapMap.values()) {
-            bootstrap.closeSocket();
+        for (Bootstrap bootstrap : bootstrapMap.values()) {
+            bootstrap.goBackToMenu();
         }
-
         bootstrapMap.clear();
     }
 
@@ -89,58 +94,54 @@ public class GameController implements Controller {
         gameService.upDateCurrentPlayer();
     }
 
-    public void endGame() {
-        for(int key : bootstrapMap.keySet()) {
-            bootstrapMap.get(key).getBroadcastView().showMatch(Messages.MATCH);
+    public void broadcastSearching() {
+        for(Bootstrap bootstrap : bootstrapMap.values()) {
+            bootstrap.getBroadcastView().showMatch(Messages.MATCH);
         }
     }
 
-    private void broadcastMatch ( LinkedList<LinkedList<Client>> allMatch ) {
-        for (LinkedList<Client> linkedList : allMatch) {
-            if(linkedList.size() == 0) {
+    private void broadcastMatch ( LinkedList<LinkedList<Client>> scoreLists ) {
+
+        for (LinkedList<Client> scoreList : scoreLists) {
+
+            if(scoreList.size() == 0) {
                 continue;
             }
-            if (linkedList.size() == 1) {
-                if(linkedList == allMatch.get(0)) {
-                    bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch(Messages.NO_MATCH);
+            if (scoreList.size() == 1) {
+                if(scoreList == scoreLists.get(0)) {
+                    bootstrapMap.get(scoreList.get(0).getId()).getBroadcastView().showMatch(Messages.NO_MATCH);
                     continue;
                 }
-                if(linkedList == allMatch.get(1) || linkedList == allMatch.get(2)) {
-                    bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch(Messages.AVERAGE);
+                if(scoreList == scoreLists.get(1) || scoreList == scoreLists.get(2)) {
+                    bootstrapMap.get(scoreList.get(0).getId()).getBroadcastView().showMatch(Messages.AVERAGE);
                     continue;
                 }
-                if(linkedList == allMatch.get(3)) {
-                    bootstrapMap.get(linkedList.get(0).getId()).getBroadcastView().showMatch(Messages.GENIUS);
+                if(scoreList == scoreLists.get(3)) {
+                    bootstrapMap.get(scoreList.get(0).getId()).getBroadcastView().showMatch(Messages.GENIUS);
                     continue;
                 }
             }
 
-            HashMap<Integer, Bootstrap> test = new HashMap<>();
-
-            for(Client client : linkedList) {
-                test.put(client.getId(), bootstrapMap.get(client.getId()));
-            }
-
-            for (Client client : linkedList) {
-                for (Bootstrap bootstrap : test.values()) {
-                    if ( client.getId() == bootstrap.getID() ) {
+            for (Client client : scoreList) {
+                for (Client match : scoreList) {
+                    if ( client.getId() == match.getId() ) {
                         continue;
                     }
 
-                    String message = client.getName() + " - " + client.getPhoneNumber() + "\n";
-                    bootstrap.getBroadcastView().showMatch(message);
+                    String contact = match.getName() + " - " + match.getPhoneNumber() + "\n";
+                    bootstrapMap.get(client.getId()).getBroadcastView().showMatch(contact);
                 }
             }
         }
     }
 
     public boolean checkAnswer (String answer){
-        sendAnswertoPlayers(answer);
+        sendAnswerToPlayers(answer);
         lastAnswer = gameService.checkAnswer(answer);
         return lastAnswer;
     }
 
-    public void sendAnswertoPlayers (String answer){
+    public void sendAnswerToPlayers(String answer){
 
         for (int key : bootstrapMap.keySet()) {
 
