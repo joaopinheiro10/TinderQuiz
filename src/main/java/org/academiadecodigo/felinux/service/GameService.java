@@ -52,7 +52,7 @@ public class GameService {
         LinkedList<Client> smart = new LinkedList<>();
         LinkedList<Client> genious = new LinkedList<>();
 
-        LinkedList<LinkedList<Client>> allMatchesList = new LinkedList<>();
+        LinkedList<LinkedList<Client>> allMatchesLists = new LinkedList<>();
 
         for (Client client : server.getClientMap().values()) {
 
@@ -77,12 +77,12 @@ public class GameService {
 
         }
 
-        allMatchesList.add(dumb);
-        allMatchesList.add(average);
-        allMatchesList.add(smart);
-        allMatchesList.add(genious);
+        allMatchesLists.add(dumb);
+        allMatchesLists.add(average);
+        allMatchesLists.add(smart);
+        allMatchesLists.add(genious);
 
-        return allMatchesList;
+        return allMatchesLists;
 
     }
 
@@ -111,5 +111,9 @@ public class GameService {
 
     public int getCurrentRoundNumber() {
         return currentRoundNumber;
+    }
+
+    public void resetCurrentRoundNumber() {
+        currentRoundNumber = 0;
     }
 }
