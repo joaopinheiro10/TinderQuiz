@@ -9,7 +9,7 @@ public enum Quiz {
     QUESTION_4(4, "Name the composer behind the soundtracks of The Lion King, Inception and Pirates of the Caribbean.\n", "hanz zimmer"),
     QUESTION_5(5, "Which 2014 Seth Rogan film caused the North Korean government to threaten action against the United States?\n", "the interview"),
     QUESTION_6(6, "What is the capital city of Australia?\n", "canberra"),
-    QUESTION_7(7, "What is the capital of Finland?\n", "edinburgh"),
+    QUESTION_7(7, "What is the capital of Scotland?\n", "edinburgh"),
     QUESTION_8(8, "What’s the name of the talking snowman in Disney’s Frozen?\n", "olaf"),
     QUESTION_9(9, "Gordon Sumner is the real name of what famous British musician?\n", "sting"),
     QUESTION_10(10, "Which Stephen King novel takes place mostly in the fictional Overlook Hotel?\n", "the shinning"),
