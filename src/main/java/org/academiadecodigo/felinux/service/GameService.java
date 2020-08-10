@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class GameService {
 
     public static final int ROUND_NUMBERS = 5;
-    public static final int NUMBER_OF_PLAYERS = 2;
+    public static final int NUMBER_OF_PLAYERS = 4;
     public int currentRoundNumber = 1;
     private final Server server;
     private String currentQuestion;
