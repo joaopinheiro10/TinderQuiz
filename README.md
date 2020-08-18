@@ -10,7 +10,7 @@
  - Each round every player receives a question
  - If you answer it right, don't drink and move on to the next
  - If you fail, drink, move on to the next
- - The game ends after 10 rounds
+ - The game ends after 5 rounds
  - After the end, game checks if you matched with someone
  
  
@@ -24,7 +24,7 @@
 
 
 ## Project:
-The idea was to produce a small chat, in which the participants answered a set of questions and in the end, depending on the result, they may or may not find their match, the idea is to find someone who matches with interest in the same areas.
+The idea was to produce a small chat, in which the participants answered a set of questions and in the end, depending on the result, they may or may not find their match, the idea is to find someone who matches within a range of correct answers.
 
 
 ### Development:
