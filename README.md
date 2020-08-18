@@ -37,7 +37,7 @@ Maven, Git, Java, MVC, UML, Architecture Client-Server (TCP), Netcat
 
 
 ##### Team:
-[Filipe Caçador](https://github.com/FiCacador)
-[Diney Rosário](https://github.com/silvaney007)
-[Tiago Silva]
-[João Pinheiro](https://github.com/joaopinheiro10)
+- [Filipe Caçador](https://github.com/FiCacador)
+- [Diney Rosário](https://github.com/silvaney007)
+- [Tiago Silva]
+- [João Pinheiro](https://github.com/joaopinheiro10)
